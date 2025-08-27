@@ -25,7 +25,7 @@ simple TraceRouteApp like IApplication
         volatile int nextFileSuffix = default(intuniform(0, 9999));
 
         // maximum hops allowed for Interest to travel
-        int maxHopsAllowed = default(16);
+        int maxHopsAllowed = default(1);
 
         // time after which an interest is retransmitted
         double interestRetransmitTimeout @unit(s) = default(5s);
