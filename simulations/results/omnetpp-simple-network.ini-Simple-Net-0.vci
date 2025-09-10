@@ -1,0 +1,1174 @@
+file 56079 1756306378                                           
+version 3
+run Simple-Net-0-20250827-16:52:49-2230
+attr configname Simple-Net
+attr datetime 20250827-16:52:49
+attr datetimef 20250827-165249
+attr experiment Simple-Net
+attr inifile omnetpp-simple-network.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network SimpleNetwork
+attr processid 2230
+attr repetition 0
+attr replication #0
+attr resultdir results/
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config **.contentServer1.numApps 1
+config **.contentServer1.app[0].typename ContentHostApp
+config **.contentServer1.app[0].hostedPrefixNames "\"ccnx://spacetime.com/\""
+config **.contentServer1.app[0].dataNamePrefix "\"sptm\""
+config **.contentServer1.app[0].segmentSize 1000byte
+config **.contentServer1.app[0].numSegmentsPerFile "intuniform(5, 20)"
+config **.contentServer1.app[0].cacheTime 2h
+config **.contentServer2.numApps 1
+config **.contentServer2.app[0].typename ContentHostApp
+config **.contentServer2.app[0].hostedPrefixNames "\"ccnx://relativity.com/\""
+config **.contentServer2.app[0].dataNamePrefix "\"rltv\""
+config **.contentServer2.app[0].segmentSize 1000byte
+config **.contentServer2.app[0].numSegmentsPerFile "intuniform(5, 20)"
+config **.contentServer2.app[0].cacheTime 2h
+config **.wirelessNode[*].numApps 1
+config **.wirelessNode[*].app[0].typename ContentDownloadApp
+config **.wirelessNode[*].app[0].interContentDownloadInterval "uniform(100.0s, 150.0s)"
+config **.wirelessNode[*].app[0].requestedPrefixNames "\"ccnx://spacetime.com/\""
+config **.wirelessNode[*].app[0].dataNamePrefix "\"sptm\""
+config **.wirelessNode[*].app[0].interestRetransmitTimeout 120s
+config **.wirelessNode[*].app[0].nextFileSuffix "intuniform(0, 99)"
+config **.wirelessNode[*].btWirelessRange 30m
+config **.wirelessNode[*].wlanWirelessRange 100m
+config **.wirelessNode[*].**.constraintAreaMinX 50m
+config **.wirelessNode[*].**.constraintAreaMinY 50m
+config **.wirelessNode[*].**.constraintAreaMinZ 0m
+config **.wirelessNode[*].**.constraintAreaMaxX 150m
+config **.wirelessNode[*].**.constraintAreaMaxY 150m
+config **.wirelessNode[*].**.constraintAreaMaxZ 0m
+config **.wirelessNode[*].mobility "\"RandomWaypointMobility\""
+config **.wirelessNode[*].**.speed "uniform(1mps, 2mps)"
+config **.wirelessNode[*].**.waitTime "uniform(1200s, 1800s)"
+config **.wirelessAccessRouter.wlanWirelessRange 100m
+config **.accessRouter.accessRouterNumWiredTransports 3
+config **.wiredNode*.numApps 1
+config **.wiredNode*.app[0].typename ContentDownloadApp
+config **.wiredNode*.app[0].interContentDownloadInterval "uniform(100.0s, 150.0s)"
+config **.wiredNode*.app[0].requestedPrefixNames "\"ccnx://relativity.com/\""
+config **.wiredNode*.app[0].dataNamePrefix "\"rltv\""
+config **.wiredNode*.app[0].interestRetransmitTimeout 120s
+config **.wiredNode*.app[0].nextFileSuffix "intuniform(0, 9)"
+config **.coreRouter1.coreRouterNumWiredTransports 4
+config **.coreRouter2.coreRouterNumWiredTransports 2
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 400m
+config **.constraintAreaMaxY 400m
+config **.constraintAreaMaxZ 0m
+config **.updateInterval 1s
+config **.initFromDisplayString true
+config network SimpleNetwork
+config sim-time-limit 48h
+config repeat 1
+config num-rngs 8
+config seed-0-mt 1000
+config seed-1-mt 2000
+config seed-2-mt 3000
+config seed-3-mt 4000
+config seed-4-mt 5000
+config seed-5-mt 6000
+config seed-6-mt 7000
+config seed-7-mt 8000
+config **.demiurge.rng-0 1
+config **.numen.rng-0 2
+config **.app[*].rng-0 3
+config **.fwd.rng-0 4
+config **.wired[*].rng-0 5
+config **.wireless[*].rng-0 6
+config **.mobility.rng-0 7
+config result-dir results/
+config output-vector-file results//omnetpp-simple-network.ini-Simple-Net-0.vec
+config output-scalar-file results//omnetpp-simple-network.ini-Simple-Net-0.sca
+config **.vector-recording true
+config **.scalar-recording true
+config **.statistic-recording true
+config record-eventlog false
+config eventlog-file results//omnetpp-simple-network.ini-Simple-Net-0.elog
+
+vector 0 SimpleNetwork.accessRouter appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 1 SimpleNetwork.accessRouter appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 2 SimpleNetwork.accessRouter appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 3 SimpleNetwork.accessRouter appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 4 SimpleNetwork.accessRouter appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 5 SimpleNetwork.accessRouter appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 6 SimpleNetwork.accessRouter appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 7 SimpleNetwork.accessRouter appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 8 SimpleNetwork.accessRouter appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 9 SimpleNetwork.accessRouter appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 10 SimpleNetwork.accessRouter appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 11 SimpleNetwork.accessRouter appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 12 SimpleNetwork.accessRouter appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 13 SimpleNetwork.accessRouter fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 14 SimpleNetwork.accessRouter fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 15 SimpleNetwork.accessRouter fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 16 SimpleNetwork.accessRouter fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 17 SimpleNetwork.accessRouter fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 18 SimpleNetwork.accessRouter fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 19 SimpleNetwork.accessRouter fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 20 SimpleNetwork.accessRouter fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 21 SimpleNetwork.accessRouter fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 22 SimpleNetwork.accessRouter fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 23 SimpleNetwork.accessRouter fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 24 SimpleNetwork.accessRouter fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 25 SimpleNetwork.accessRouter fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 26 SimpleNetwork.accessRouter fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 27 SimpleNetwork.accessRouter fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 28 SimpleNetwork.accessRouter fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 29 SimpleNetwork.accessRouter transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 30 SimpleNetwork.accessRouter transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 31 SimpleNetwork.accessRouter transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 32 SimpleNetwork.accessRouter transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 33 SimpleNetwork.wirelessAccessRouter appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 34 SimpleNetwork.wirelessAccessRouter appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 35 SimpleNetwork.wirelessAccessRouter appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 36 SimpleNetwork.wirelessAccessRouter appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 37 SimpleNetwork.wirelessAccessRouter appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 38 SimpleNetwork.wirelessAccessRouter appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 39 SimpleNetwork.wirelessAccessRouter appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 40 SimpleNetwork.wirelessAccessRouter appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 41 SimpleNetwork.wirelessAccessRouter appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 42 SimpleNetwork.wirelessAccessRouter appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 43 SimpleNetwork.wirelessAccessRouter appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 44 SimpleNetwork.wirelessAccessRouter appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 45 SimpleNetwork.wirelessAccessRouter appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 46 SimpleNetwork.wirelessAccessRouter fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 47 SimpleNetwork.wirelessAccessRouter fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 48 SimpleNetwork.wirelessAccessRouter fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 49 SimpleNetwork.wirelessAccessRouter fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 50 SimpleNetwork.wirelessAccessRouter fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 51 SimpleNetwork.wirelessAccessRouter fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 52 SimpleNetwork.wirelessAccessRouter fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 53 SimpleNetwork.wirelessAccessRouter fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 54 SimpleNetwork.wirelessAccessRouter fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 55 SimpleNetwork.wirelessAccessRouter fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 56 SimpleNetwork.wirelessAccessRouter fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 57 SimpleNetwork.wirelessAccessRouter fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 58 SimpleNetwork.wirelessAccessRouter fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 59 SimpleNetwork.wirelessAccessRouter fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 60 SimpleNetwork.wirelessAccessRouter fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 61 SimpleNetwork.wirelessAccessRouter fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 62 SimpleNetwork.wirelessAccessRouter transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 63 SimpleNetwork.wirelessAccessRouter transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 64 SimpleNetwork.wirelessAccessRouter transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 65 SimpleNetwork.wirelessAccessRouter transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 66 SimpleNetwork.wiredNode1.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 67 SimpleNetwork.wiredNode1.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 68 SimpleNetwork.wiredNode1.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 69 SimpleNetwork.wiredNode1.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 70 SimpleNetwork.wiredNode1.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 71 SimpleNetwork.wiredNode1.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 72 SimpleNetwork.wiredNode1 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 73 SimpleNetwork.wiredNode1 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 74 SimpleNetwork.wiredNode1 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 75 SimpleNetwork.wiredNode1 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 76 SimpleNetwork.wiredNode1 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 77 SimpleNetwork.wiredNode1 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 78 SimpleNetwork.wiredNode1 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 79 SimpleNetwork.wiredNode1 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 80 SimpleNetwork.wiredNode1 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 81 SimpleNetwork.wiredNode1 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 82 SimpleNetwork.wiredNode1 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 83 SimpleNetwork.wiredNode1 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 84 SimpleNetwork.wiredNode1 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 85 SimpleNetwork.wiredNode1 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 86 SimpleNetwork.wiredNode1 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 87 SimpleNetwork.wiredNode1 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 88 SimpleNetwork.wiredNode1 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 89 SimpleNetwork.wiredNode1 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 90 SimpleNetwork.wiredNode1 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 91 SimpleNetwork.wiredNode1 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 92 SimpleNetwork.wiredNode1 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 93 SimpleNetwork.wiredNode1 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 94 SimpleNetwork.wiredNode1 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 95 SimpleNetwork.wiredNode1 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 96 SimpleNetwork.wiredNode1 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 97 SimpleNetwork.wiredNode1 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 98 SimpleNetwork.wiredNode1 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 99 SimpleNetwork.wiredNode1 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 100 SimpleNetwork.wiredNode1 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 101 SimpleNetwork.wiredNode1 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 102 SimpleNetwork.wiredNode1 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 103 SimpleNetwork.wiredNode1 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 104 SimpleNetwork.wiredNode1 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 105 SimpleNetwork.wiredNode2.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 106 SimpleNetwork.wiredNode2.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 107 SimpleNetwork.wiredNode2.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 108 SimpleNetwork.wiredNode2.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 109 SimpleNetwork.wiredNode2.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 110 SimpleNetwork.wiredNode2.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 111 SimpleNetwork.wiredNode2 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 112 SimpleNetwork.wiredNode2 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 113 SimpleNetwork.wiredNode2 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 114 SimpleNetwork.wiredNode2 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 115 SimpleNetwork.wiredNode2 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 116 SimpleNetwork.wiredNode2 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 117 SimpleNetwork.wiredNode2 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 118 SimpleNetwork.wiredNode2 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 119 SimpleNetwork.wiredNode2 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 120 SimpleNetwork.wiredNode2 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 121 SimpleNetwork.wiredNode2 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 122 SimpleNetwork.wiredNode2 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 123 SimpleNetwork.wiredNode2 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 124 SimpleNetwork.wiredNode2 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 125 SimpleNetwork.wiredNode2 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 126 SimpleNetwork.wiredNode2 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 127 SimpleNetwork.wiredNode2 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 128 SimpleNetwork.wiredNode2 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 129 SimpleNetwork.wiredNode2 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 130 SimpleNetwork.wiredNode2 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 131 SimpleNetwork.wiredNode2 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 132 SimpleNetwork.wiredNode2 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 133 SimpleNetwork.wiredNode2 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 134 SimpleNetwork.wiredNode2 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 135 SimpleNetwork.wiredNode2 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 136 SimpleNetwork.wiredNode2 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 137 SimpleNetwork.wiredNode2 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 138 SimpleNetwork.wiredNode2 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 139 SimpleNetwork.wiredNode2 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 140 SimpleNetwork.wiredNode2 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 141 SimpleNetwork.wiredNode2 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 142 SimpleNetwork.wiredNode2 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 143 SimpleNetwork.wiredNode2 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 144 SimpleNetwork.wirelessNode[0].app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 145 SimpleNetwork.wirelessNode[0].app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 146 SimpleNetwork.wirelessNode[0].app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 147 SimpleNetwork.wirelessNode[0].app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 148 SimpleNetwork.wirelessNode[0].app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 149 SimpleNetwork.wirelessNode[0].app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 150 SimpleNetwork.wirelessNode[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 151 SimpleNetwork.wirelessNode[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 152 SimpleNetwork.wirelessNode[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 153 SimpleNetwork.wirelessNode[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 154 SimpleNetwork.wirelessNode[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 155 SimpleNetwork.wirelessNode[0] appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 156 SimpleNetwork.wirelessNode[0] appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 157 SimpleNetwork.wirelessNode[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 158 SimpleNetwork.wirelessNode[0] appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 159 SimpleNetwork.wirelessNode[0] appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 160 SimpleNetwork.wirelessNode[0] appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 161 SimpleNetwork.wirelessNode[0] appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 162 SimpleNetwork.wirelessNode[0] appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 163 SimpleNetwork.wirelessNode[0] fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 164 SimpleNetwork.wirelessNode[0] fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 165 SimpleNetwork.wirelessNode[0] fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 166 SimpleNetwork.wirelessNode[0] fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 167 SimpleNetwork.wirelessNode[0] fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 168 SimpleNetwork.wirelessNode[0] fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 169 SimpleNetwork.wirelessNode[0] fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 170 SimpleNetwork.wirelessNode[0] fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 171 SimpleNetwork.wirelessNode[0] fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 172 SimpleNetwork.wirelessNode[0] fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 173 SimpleNetwork.wirelessNode[0] fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 174 SimpleNetwork.wirelessNode[0] fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 175 SimpleNetwork.wirelessNode[0] fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 176 SimpleNetwork.wirelessNode[0] fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 177 SimpleNetwork.wirelessNode[0] fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 178 SimpleNetwork.wirelessNode[0] fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 179 SimpleNetwork.wirelessNode[0] transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 180 SimpleNetwork.wirelessNode[0] transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 181 SimpleNetwork.wirelessNode[0] transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 182 SimpleNetwork.wirelessNode[0] transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 183 SimpleNetwork.wirelessNode[1].app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 184 SimpleNetwork.wirelessNode[1].app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 185 SimpleNetwork.wirelessNode[1].app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 186 SimpleNetwork.wirelessNode[1].app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 187 SimpleNetwork.wirelessNode[1].app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 188 SimpleNetwork.wirelessNode[1].app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 189 SimpleNetwork.wirelessNode[1] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 190 SimpleNetwork.wirelessNode[1] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 191 SimpleNetwork.wirelessNode[1] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 192 SimpleNetwork.wirelessNode[1] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 193 SimpleNetwork.wirelessNode[1] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 194 SimpleNetwork.wirelessNode[1] appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 195 SimpleNetwork.wirelessNode[1] appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 196 SimpleNetwork.wirelessNode[1] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 197 SimpleNetwork.wirelessNode[1] appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 198 SimpleNetwork.wirelessNode[1] appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 199 SimpleNetwork.wirelessNode[1] appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 200 SimpleNetwork.wirelessNode[1] appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 201 SimpleNetwork.wirelessNode[1] appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 202 SimpleNetwork.wirelessNode[1] fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 203 SimpleNetwork.wirelessNode[1] fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 204 SimpleNetwork.wirelessNode[1] fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 205 SimpleNetwork.wirelessNode[1] fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 206 SimpleNetwork.wirelessNode[1] fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 207 SimpleNetwork.wirelessNode[1] fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 208 SimpleNetwork.wirelessNode[1] fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 209 SimpleNetwork.wirelessNode[1] fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 210 SimpleNetwork.wirelessNode[1] fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 211 SimpleNetwork.wirelessNode[1] fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 212 SimpleNetwork.wirelessNode[1] fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 213 SimpleNetwork.wirelessNode[1] fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 214 SimpleNetwork.wirelessNode[1] fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 215 SimpleNetwork.wirelessNode[1] fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 216 SimpleNetwork.wirelessNode[1] fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 217 SimpleNetwork.wirelessNode[1] fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 218 SimpleNetwork.wirelessNode[1] transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 219 SimpleNetwork.wirelessNode[1] transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 220 SimpleNetwork.wirelessNode[1] transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 221 SimpleNetwork.wirelessNode[1] transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 222 SimpleNetwork.coreRouter1 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 223 SimpleNetwork.coreRouter1 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 224 SimpleNetwork.coreRouter1 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 225 SimpleNetwork.coreRouter1 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 226 SimpleNetwork.coreRouter1 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 227 SimpleNetwork.coreRouter1 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 228 SimpleNetwork.coreRouter1 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 229 SimpleNetwork.coreRouter1 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 230 SimpleNetwork.coreRouter1 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 231 SimpleNetwork.coreRouter1 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 232 SimpleNetwork.coreRouter1 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 233 SimpleNetwork.coreRouter1 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 234 SimpleNetwork.coreRouter1 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 235 SimpleNetwork.coreRouter1 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 236 SimpleNetwork.coreRouter1 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 237 SimpleNetwork.coreRouter1 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 238 SimpleNetwork.coreRouter1 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 239 SimpleNetwork.coreRouter1 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 240 SimpleNetwork.coreRouter1 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 241 SimpleNetwork.coreRouter1 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 242 SimpleNetwork.coreRouter1 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 243 SimpleNetwork.coreRouter1 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 244 SimpleNetwork.coreRouter1 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 245 SimpleNetwork.coreRouter1 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 246 SimpleNetwork.coreRouter1 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 247 SimpleNetwork.coreRouter1 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 248 SimpleNetwork.coreRouter1 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 249 SimpleNetwork.coreRouter1 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 250 SimpleNetwork.coreRouter1 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 251 SimpleNetwork.coreRouter1 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 252 SimpleNetwork.coreRouter1 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 253 SimpleNetwork.coreRouter1 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 254 SimpleNetwork.coreRouter1 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 255 SimpleNetwork.coreRouter2 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 256 SimpleNetwork.coreRouter2 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 257 SimpleNetwork.coreRouter2 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 258 SimpleNetwork.coreRouter2 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 259 SimpleNetwork.coreRouter2 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 260 SimpleNetwork.coreRouter2 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 261 SimpleNetwork.coreRouter2 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 262 SimpleNetwork.coreRouter2 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 263 SimpleNetwork.coreRouter2 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 264 SimpleNetwork.coreRouter2 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 265 SimpleNetwork.coreRouter2 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 266 SimpleNetwork.coreRouter2 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 267 SimpleNetwork.coreRouter2 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 268 SimpleNetwork.coreRouter2 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 269 SimpleNetwork.coreRouter2 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 270 SimpleNetwork.coreRouter2 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 271 SimpleNetwork.coreRouter2 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 272 SimpleNetwork.coreRouter2 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 273 SimpleNetwork.coreRouter2 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 274 SimpleNetwork.coreRouter2 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 275 SimpleNetwork.coreRouter2 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 276 SimpleNetwork.coreRouter2 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 277 SimpleNetwork.coreRouter2 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 278 SimpleNetwork.coreRouter2 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 279 SimpleNetwork.coreRouter2 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 280 SimpleNetwork.coreRouter2 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 281 SimpleNetwork.coreRouter2 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 282 SimpleNetwork.coreRouter2 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 283 SimpleNetwork.coreRouter2 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 284 SimpleNetwork.coreRouter2 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 285 SimpleNetwork.coreRouter2 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 286 SimpleNetwork.coreRouter2 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 287 SimpleNetwork.coreRouter2 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 288 SimpleNetwork.contentServer1 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 289 SimpleNetwork.contentServer1 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 290 SimpleNetwork.contentServer1 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 291 SimpleNetwork.contentServer1 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 292 SimpleNetwork.contentServer1 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 293 SimpleNetwork.contentServer1 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 294 SimpleNetwork.contentServer1 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 295 SimpleNetwork.contentServer1 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 296 SimpleNetwork.contentServer1 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 297 SimpleNetwork.contentServer1 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 298 SimpleNetwork.contentServer1 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 299 SimpleNetwork.contentServer1 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 300 SimpleNetwork.contentServer1 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 301 SimpleNetwork.contentServer1 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 302 SimpleNetwork.contentServer1 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 303 SimpleNetwork.contentServer1 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 304 SimpleNetwork.contentServer1 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 305 SimpleNetwork.contentServer1 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 306 SimpleNetwork.contentServer1 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 307 SimpleNetwork.contentServer1 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 308 SimpleNetwork.contentServer1 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 309 SimpleNetwork.contentServer1 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 310 SimpleNetwork.contentServer1 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 311 SimpleNetwork.contentServer1 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 312 SimpleNetwork.contentServer1 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 313 SimpleNetwork.contentServer1 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 314 SimpleNetwork.contentServer1 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 315 SimpleNetwork.contentServer1 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 316 SimpleNetwork.contentServer1 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 317 SimpleNetwork.contentServer1 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 318 SimpleNetwork.contentServer1 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 319 SimpleNetwork.contentServer1 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 320 SimpleNetwork.contentServer1 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 321 SimpleNetwork.contentServer2 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 322 SimpleNetwork.contentServer2 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 323 SimpleNetwork.contentServer2 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 324 SimpleNetwork.contentServer2 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 325 SimpleNetwork.contentServer2 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 326 SimpleNetwork.contentServer2 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 327 SimpleNetwork.contentServer2 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 328 SimpleNetwork.contentServer2 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 329 SimpleNetwork.contentServer2 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 330 SimpleNetwork.contentServer2 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 331 SimpleNetwork.contentServer2 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 332 SimpleNetwork.contentServer2 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 333 SimpleNetwork.contentServer2 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 334 SimpleNetwork.contentServer2 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 335 SimpleNetwork.contentServer2 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 336 SimpleNetwork.contentServer2 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 337 SimpleNetwork.contentServer2 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 338 SimpleNetwork.contentServer2 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 339 SimpleNetwork.contentServer2 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 340 SimpleNetwork.contentServer2 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 341 SimpleNetwork.contentServer2 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 342 SimpleNetwork.contentServer2 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 343 SimpleNetwork.contentServer2 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 344 SimpleNetwork.contentServer2 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 345 SimpleNetwork.contentServer2 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 346 SimpleNetwork.contentServer2 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 347 SimpleNetwork.contentServer2 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 348 SimpleNetwork.contentServer2 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 349 SimpleNetwork.contentServer2 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 350 SimpleNetwork.contentServer2 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 351 SimpleNetwork.contentServer2 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 352 SimpleNetwork.contentServer2 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 353 SimpleNetwork.contentServer2 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 354 SimpleNetwork appNetworkInterestRetransmissionCount:vector ETV
+attr recordingmode vector
+attr source appNetworkInterestRetransmissionCount
+vector 355 SimpleNetwork appNetworkInterestInjectedCount:vector ETV
+attr recordingmode vector
+attr source appNetworkInterestInjectedCount
+vector 356 SimpleNetwork fwdNetworkCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdNetworkCacheHitRatio
+vector 357 SimpleNetwork fwdNetworkCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdNetworkCacheMissRatio
+

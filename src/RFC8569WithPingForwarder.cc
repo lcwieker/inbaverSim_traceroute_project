@@ -480,6 +480,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
         pitEntry->reversePendingToken_new = 0;
         pitEntry->reversePendingToken_old = 0;
         pitEntry->creationtime = simTime(); //added newly
+        pitEntry->pitEntryType = 0;
 
         ArrivalInfo *arrivalInfo = new ArrivalInfo();
         arrivalInfo->receivedFace = arrivalFaceEntry;
@@ -499,7 +500,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
             interestMsg->setForwardPendingToken(intuniform(1, 2147483647));
             pitEntry->forwardPendingToken_new = interestMsg->getForwardPendingToken();
 
-            EV_INFO << simTime() << "Adding PIT entry: "
+            EV_INFO << simTime() << "Adding PIT entry for interest: "
                      << pitEntry->prefixName
                      << " " << pitEntry->dataName
                      << " " << pitEntry->versionName
@@ -606,7 +607,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
              //Save newly generated FPT as FPT_new in PIT
              pitEntry->forwardPendingToken_new = interestMsg->getForwardPendingToken();
 
-             EV_INFO << simTime() << "Adding PIT entry: "
+             EV_INFO << simTime() << "Adding PIT entry for interest: "
                      << pitEntry->prefixName
                      << " " << pitEntry->dataName
                      << " " << pitEntry->versionName
@@ -737,7 +738,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
             newInterestMsg->setForwardPendingToken(intuniform(1, 2147483647));
             pitEntry->forwardPendingToken_new = newInterestMsg->getForwardPendingToken();
 
-            EV_INFO << simTime() << "Adding PIT entry: "
+            EV_INFO << simTime() << "Adding PIT entry for interest: "
                     << pitEntry->prefixName
                     << " " << pitEntry->dataName
                     << " " << pitEntry->versionName
@@ -830,7 +831,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
             newInterestMsg->setForwardPendingToken(intuniform(1, 2147483647));
             pitEntry->forwardPendingToken_new = newInterestMsg->getForwardPendingToken();
 
-            EV_INFO << simTime() << "Adding PIT entry: "
+            EV_INFO << simTime() << "Adding PIT entry for interest: "
                     << pitEntry->prefixName
                     << " " << pitEntry->dataName
                     << " " << pitEntry->versionName
@@ -881,7 +882,8 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
         // is there a PIT entry already for previous Interests received
         // for same content?
         PITEntry *pitEntry = getPITEntry(interestMsg->getPrefixName(), interestMsg->getDataName(),
-                                        interestMsg->getVersionName(), interestMsg->getSegmentNum());
+                                        interestMsg->getVersionName(), interestMsg->getSegmentNum(),
+                                        0);
 
         dumpPIT();
 
@@ -961,6 +963,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
         pitEntry->segmentNum = interestMsg->getSegmentNum();
         pitEntry->hopLimit = interestMsg->getHopLimit() - 1;
         pitEntry->hopsTravelled = interestMsg->getHopsTravelled() + 1;
+        pitEntry->pitEntryType = 0;
 
         ArrivalInfo *arrivalInfo = new ArrivalInfo();
         arrivalInfo->receivedFace = arrivalFaceEntry;
@@ -971,7 +974,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
         }
         pitEntry->arrivalInfoList.push_back(arrivalInfo);
 
-        EV_INFO << simTime() << "Adding PIT entry: "
+        EV_INFO << simTime() << "Adding PIT entry for interest: "
                 << pitEntry->prefixName
                 << " " << pitEntry->dataName
                 << " " << pitEntry->versionName
@@ -1190,7 +1193,8 @@ void RFC8569WithPingForwarder::processContentObj(ContentObjMsg *contentObjMsg)
 
     // find the PIT entry, if there is one saved
     PITEntry *pitEntry = getPITEntry(contentObjMsg->getPrefixName(), contentObjMsg->getDataName(),
-                            contentObjMsg->getVersionName(), contentObjMsg->getSegmentNum());
+                            contentObjMsg->getVersionName(), contentObjMsg->getSegmentNum(),
+                            0);
 
     // when there is no PIT entry, simply drop the Content Obj
     // because nobody to forward it to
@@ -1290,7 +1294,8 @@ void RFC8569WithPingForwarder::processContentObj(ContentObjMsg *contentObjMsg)
 
         // find the PIT entry, if there is one saved
         PITEntry *pitEntry = getPITEntry(contentObjMsg->getPrefixName(), contentObjMsg->getDataName(),
-                                contentObjMsg->getVersionName(), contentObjMsg->getSegmentNum());
+                                contentObjMsg->getVersionName(), contentObjMsg->getSegmentNum(),
+                                0);
 
         // when there is no PIT entry, simply drop the Content Obj
         // because nobody to forward it to
@@ -1386,7 +1391,8 @@ void RFC8569WithPingForwarder::processInterestRtn(InterestRtnMsg *interestRtnMsg
 
     // Is there a PIT entry for the returning interest?
     PITEntry *pitEntry = getPITEntry(interestRtnMsg->getPrefixName(), interestRtnMsg->getDataName(),
-                                       interestRtnMsg->getVersionName(), interestRtnMsg->getSegmentNum());
+                                       interestRtnMsg->getVersionName(), interestRtnMsg->getSegmentNum(),
+                                       0);
 
     // when no PIT entry exist, discard Interest
     if (pitEntry == NULL) {
@@ -1519,6 +1525,7 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
         tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE);
         tracerouteRplMsg->setPathlabel(""); //empty pathlabel because this is the first node on the way back
         tracerouteRplMsg->setTracerouteReplyCode(1); // 1 = cache hit
+        tracerouteRplMsg->setHopsTravelled(0);
 
         EV_INFO << simTime() << " Sending Traceroute Reply for Cached Object: "
                     << csEntry->prefixName
@@ -1561,7 +1568,8 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
      * Because we do not change the PIT entry itself, we cannot distinguish between interest and traceroute request, thus both content messages and traceroute replies will be forwarded equally
      */
     PITEntry *pitEntry = getPITEntry(tracerouteRqstMsg->getPrefixName(), tracerouteRqstMsg->getDataName(),
-                                        tracerouteRqstMsg->getVersionName(), tracerouteRqstMsg->getSegmentNum());
+                                        tracerouteRqstMsg->getVersionName(), tracerouteRqstMsg->getSegmentNum(),
+                                        1);
 
     dumpPIT();
 
@@ -1636,6 +1644,7 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
         tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE);
         tracerouteRplMsg->setPathlabel(""); // empty pathlabel because this is the first node on the way back
         tracerouteRplMsg->setTracerouteReplyCode(4); // 4 = hopLimit reached
+        tracerouteRplMsg->setHopsTravelled(0);
 
         delete tracerouteRqstMsg;
         return;
@@ -1650,6 +1659,7 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
     pitEntry->segmentNum = tracerouteRqstMsg->getSegmentNum();
     pitEntry->hopLimit = tracerouteRqstMsg->getHopLimit() - 1;
     pitEntry->hopsTravelled = tracerouteRqstMsg->getHopsTravelled() + 1;
+    pitEntry->pitEntryType = 1;
 
     ArrivalInfo *arrivalInfo = new ArrivalInfo();
     arrivalInfo->receivedFace = arrivalFaceEntry;
@@ -1660,7 +1670,7 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
     }
     pitEntry->arrivalInfoList.push_back(arrivalInfo);
 
-    EV_INFO << simTime() << "Adding PIT entry: "
+    EV_INFO << simTime() << "Adding PIT entry for Traceroute Request: "
             << pitEntry->prefixName
             << " " << pitEntry->dataName
             << " " << pitEntry->versionName
@@ -1871,11 +1881,12 @@ void RFC8569WithPingForwarder::processTracerouteRpl(TracerouteRplMsg *traceroute
 
     // find the PIT entry, if there is one save
     PITEntry *pitEntry = getPITEntry(tracerouteRplMsg->getPrefixName(), tracerouteRplMsg->getDataName(),
-                            tracerouteRplMsg->getVersionName(), tracerouteRplMsg->getSegmentNum());
+                            tracerouteRplMsg->getVersionName(), tracerouteRplMsg->getSegmentNum(),
+                            1);
 
     // when there is no PIT entry, simply drop the Traceroute Reply
     if (pitEntry == NULL){
-        EV_INFO << simTime() << "PIT entry not found: "
+        EV_INFO << simTime() << "PIT entry not found for Traceroute Reply: "
                 << " " << tracerouteRplMsg->getPrefixName()
                 << " " << tracerouteRplMsg->getDataName()
                 << " " << tracerouteRplMsg->getVersionName()
@@ -1912,6 +1923,7 @@ void RFC8569WithPingForwarder::processTracerouteRpl(TracerouteRplMsg *traceroute
         newTracerouteRplMsg->setPayloadAsString(tracerouteRplMsg->getPayloadAsString());
         newTracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE + tracerouteRplMsg->getPayloadSize());
         newTracerouteRplMsg->setPathlabel(pathlabel);
+        newTracerouteRplMsg->setHopsTravelled(tracerouteRplMsg->getHopsTravlled() + 1);
 
         // add the transport address if it exists
         if(arrivalInfo->transportAddress.size() > 0 ){
@@ -2036,13 +2048,13 @@ CSEntry *RFC8569WithPingForwarder::getCSEntry(string prefixName, string dataName
     return NULL;
 }
 
-PITEntry *RFC8569WithPingForwarder::getPITEntry(string prefixName, string dataName, string versionName, int segmentNum)
+PITEntry *RFC8569WithPingForwarder::getPITEntry(string prefixName, string dataName, string versionName, int segmentNum, int pitEntryType)
 {
     list<PITEntry*>::iterator iteratorPITEntry = pit.begin();
     while (iteratorPITEntry != pit.end()) {
         PITEntry *pitEntry = *iteratorPITEntry;
         if (strcmp(prefixName.c_str(), pitEntry->prefixName.c_str()) == 0 && strcmp(dataName.c_str(), pitEntry->dataName.c_str()) == 0
-                 && strcmp(versionName.c_str(), pitEntry->versionName.c_str()) == 0 && segmentNum == pitEntry->segmentNum) {
+                 && strcmp(versionName.c_str(), pitEntry->versionName.c_str()) == 0 && segmentNum == pitEntry->segmentNum && pitEntryType == pitEntry->pitEntryType) {
             return pitEntry;
 
         }
@@ -2185,6 +2197,7 @@ void RFC8569WithPingForwarder::updatePITEntry()
                               << " " << pitEntry->hopLimit
                               << " " << pitEntry->hopsTravelled
                               << " " << pitEntry->expirytime
+                              << " " << pitEntry->pitEntryType
                               << endl;
 
                       //Stats: To check how many PIT records were deleted due to expiry
@@ -2348,7 +2361,8 @@ void RFC8569WithPingForwarder::dumpPIT()
                 << pitEntry->prefixName << " "
                 << pitEntry->dataName << " "
                 << pitEntry->versionName << " "
-                << pitEntry->segmentNum << "\n";
+                << pitEntry->segmentNum << " "
+                << pitEntry->pitEntryType << "\n";
         for (int i = 0; i < pitEntry->arrivalInfoList.size(); i++) {
             EV_INFO << simTime() << "   arrival face: "
                     << pitEntry->arrivalInfoList[i]->receivedFace->faceID

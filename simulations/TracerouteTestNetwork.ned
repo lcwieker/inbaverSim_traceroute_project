@@ -1,4 +1,3 @@
-//
 //  Created by Finke, Tarek & Wieker, Lars as part of the Network Simulation Project
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
@@ -25,8 +24,8 @@ network TracerouteTestNetwork
 
         @statistic[fwdNetworkCacheHitRatio](source=fwdNetworkCacheHitRatio; record=min,max,count,last,vector);
         @statistic[fwdNetworkCacheMissRatio](source=fwdNetworkCacheMissRatio; record=min,max,count,last,vector);
-       	@statistic[fwdInterestToContentRatio](source=fwdInterestToContentRatio; record=min,max,count,last,vector,mean);
-       	@statistic[fwdRequestToReplyRatio](source=fwdRequestToReplyRatio; record=min,max,count,last,vector,mean);
+        @statistic[fwdInterestToContentRatio](source=fwdInterestToContentRatio; record=min,max,count,last,vector,mean);
+        @statistic[fwdRequestToReplyRatio](source=fwdRequestToReplyRatio; record=min,max,count,last,vector,mean);
         @statistic[fwdTotalTraffic](source=fwdTotalTraffic; record=min,max,count,last,vector,sum,mean);
         @statistic[fwdTotalTrafficBytes](source=fwdTotalTrafficBytes; record=min,max,count,last,vector,sum,mean);
         @statistic[fwdtotalExpiredPITCountSignal](source=fwdtotalExpiredPITCountSignal; record=min,max,count,last,vector,sum,mean);
@@ -41,42 +40,145 @@ network TracerouteTestNetwork
         @display("bgb=400,400;bgg=100,0,grey95;bgu=m");
 
     submodules:
-        accessRouter: AccessRouter {
-            @display("p=90,217");
+        accessRouter1: AccessRouter {
+            @display("p=64,103");
         }
-        wirelessAccessRouter: WirelessAccessRouter {
-            @display("p=102,96");
+        accessRouter2: AccessRouter {
+            @display("p=190,81");
         }
+        accessRouter3: AccessRouter {
+            @display("p=310,119");
+        }
+
         wiredNode1: WiredNode {
-            @display("p=51,307");
+            @display("p=6,63");
         }
         wiredNode2: WiredNode {
-            @display("p=151,307");
+            @display("p=35,18");
         }
-        wirelessNode[2]: WirelessNode {
-            @display("p=103,51");
+        wiredNode3: WiredNode {
+            @display("p=90,57");
         }
+        wiredNode4: WiredNode {
+            @display("p=153,40");
+        }
+        wiredNode5: WiredNode {
+            @display("p=190,1");
+        }
+        wiredNode6: WiredNode {
+            @display("p=257,10");
+        }
+        wiredNode7: WiredNode {
+            @display("p=291,63");
+        }
+        wiredNode8: WiredNode {
+            @display("p=362,40");
+        }
+        wiredNode9: WiredNode {
+            @display("p=362,104");
+        }
+
         coreRouter1: CoreRouter {
-            @display("p=246,237");
+            @display("p=53,165");
         }
         coreRouter2: CoreRouter {
-            @display("p=246,107");
+            @display("p=110,219");
         }
+        coreRouter3: CoreRouter {
+            @display("p=43,269");
+        }
+        coreRouter4: CoreRouter {
+            @display("p=190,176");
+        }
+        coreRouter5: CoreRouter {
+            @display("p=310,176");
+        }
+        coreRouter6: CoreRouter {
+            @display("p=347,293");
+        }
+        coreRouter7: CoreRouter {
+            @display("p=130,126");
+        }
+        coreRouter8: CoreRouter {
+            @display("p=237,137");
+        }
+        coreRouter9: CoreRouter {
+            @display("p=220,323");
+        }
+        coreRouter10: CoreRouter {
+            @display("p=275,269");
+        }
+        coreRouter11: CoreRouter {
+            @display("p=110,284");
+        }
+        coreRouter12: CoreRouter {
+            @display("p=130,361");
+        }
+
+
         contentServer1: ContentServer {
-            @display("p=336,284");
+            @display("p=30,346");
         }
         contentServer2: ContentServer {
-            @display("p=336,153");
+            @display("p=200,231");
         }
+        contentServer3: ContentServer {
+            @display("p=362,361");
+        }
+
         demiurge: Demiurge {
-            @display("p=226,27");
+
+            @display("p=246,380");
         }
     connections allowunconnected:
-        wiredNode1.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter.wiredInOut++;
-        wiredNode2.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter.wiredInOut++;
-        accessRouter.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> coreRouter1.wiredInOut++;
-        wirelessAccessRouter.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> coreRouter1.wiredInOut++;
-        coreRouter1.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> contentServer1.wiredInOut++;
-        coreRouter1.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> coreRouter2.wiredInOut++;
-        coreRouter2.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> contentServer2.wiredInOut++;
+        
+        // endnodes
+        wiredNode1.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter1.wiredInOut++;
+        wiredNode2.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter1.wiredInOut++;
+        wiredNode3.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter1.wiredInOut++;
+        
+        wiredNode4.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter2.wiredInOut++;
+        wiredNode5.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter2.wiredInOut++;
+        wiredNode6.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter2.wiredInOut++;
+        
+        wiredNode7.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter3.wiredInOut++;
+        wiredNode8.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter3.wiredInOut++;
+        wiredNode9.wiredInOut++ <--> DatarateChannel {  datarate = 1e6bps; } <--> accessRouter3.wiredInOut++;
+        
+        
+        // acces routers
+        accessRouter1.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter1.wiredInOut++;
+        accessRouter2.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter4.wiredInOut++;
+        accessRouter3.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter5.wiredInOut++;
+        
+        
+        //core routers
+        coreRouter1.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter2.wiredInOut++;
+        coreRouter1.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter7.wiredInOut++;
+        
+        coreRouter2.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter3.wiredInOut++;
+        coreRouter2.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter9.wiredInOut++;
+        coreRouter2.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter11.wiredInOut++;
+        
+        coreRouter4.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter7.wiredInOut++;
+        coreRouter4.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter8.wiredInOut++;
+        
+        coreRouter5.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter6.wiredInOut++;
+        coreRouter5.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter8.wiredInOut++;
+        coreRouter5.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter10.wiredInOut++;
+        
+        coreRouter9.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter10.wiredInOut++;
+        coreRouter9.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter12.wiredInOut++;
+        
+        coreRouter10.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter6.wiredInOut++;
+        
+        coreRouter11.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter12.wiredInOut++;
+        
+        
+        // content servers
+        contentServer1.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter3.wiredInOut++;
+        contentServer2.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter4.wiredInOut++;
+        contentServer3.wiredInOut++ <--> DatarateChannel {	datarate = 1e6bps; } <--> coreRouter6.wiredInOut++;
+        
 }
+        

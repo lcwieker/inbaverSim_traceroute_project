@@ -240,6 +240,7 @@ packet TracerouteRplMsg
     // msg sizes in bytes
     int headerSize;
     int payloadSize;
+    int hopsTravelled;
 
     // total segments in the requested data (identified by prefixName + dataName)
     int totalNumSegments;

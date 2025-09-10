@@ -125,6 +125,11 @@ typedef struct ArrivalInfo {
 
 } ArrivalInfo;
 
+enum PitEntryType{
+    Interest = 0,
+    TracerouteRequest = 1
+};
+
 typedef struct PITEntry {
     // CCNx name segments
     string prefixName;
@@ -151,6 +156,9 @@ typedef struct PITEntry {
 
     //Creation Time
     simtime_t creationtime;
+
+    //distinguish interests and traceroute requests
+    PitEntryType pitEntryType;
 
 } PITEntry;
 

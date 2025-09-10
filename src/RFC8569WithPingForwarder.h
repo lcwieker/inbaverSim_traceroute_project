@@ -76,7 +76,7 @@ class RFC8569WithPingForwarder : public cSimpleModule
       FaceEntry *getFaceEntryFromFaceID(long faceID);
       FaceEntry *getFaceEntryFromIndex(int faceIndex);
       CSEntry *getCSEntry(string prefixName, string dataName, string versionName, int segmentNum);
-      PITEntry *getPITEntry(string prefixName, string dataName, string versionName, int segmentNum);
+      PITEntry *getPITEntry(string prefixName, string dataName, string versionName, int segmentNum, int pitEntryType);
       FIBEntry *updateFIB(string prefixName, FaceEntry *faceEntry);
       FIBEntry *longestPrefixMatchingInFIB(string prefixName);
       PITEntry *getPITEntryUsingRPT(int rpt);
