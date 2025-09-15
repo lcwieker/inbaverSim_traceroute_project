@@ -10,6 +10,7 @@
 #include "RFC8609Messages_m.h"
 #include "InternalMessages_m.h"
 #include "Numen.h"
+#include <vector>
 
 using namespace omnetpp;
 
@@ -37,6 +38,7 @@ protected:
     Numen *numenModel;
 
     vector <string> requestedPrefixList;
+    vector<vector<simtime_t>> traceSendTime;
 
     // start traceroute event
     cMessage *traceRouteStartEvent;
@@ -52,7 +54,7 @@ protected:
     string requestingDataName;
     int requestedSegNum;
     int totalSegments;
-    simtime_t lastInterestSentTime;
+    simtime_t lastTraceSentTime;
 
 
     // stat signals

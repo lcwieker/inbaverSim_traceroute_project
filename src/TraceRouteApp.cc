@@ -14,6 +14,7 @@ void TraceRouteApp::initialize(int stage)
         dataNamePrefix = par("dataNamePrefix").stringValue();
         maxHopsAllowed = par("maxHopsAllowed");
         interestRetransmitTimeout = par("interestRetransmitTimeout");
+        //ftraceSendTime = par("traceSendTime");
 
 
     } else if (stage == 1) {
@@ -65,13 +66,14 @@ void TraceRouteApp::initialize(int stage)
         scheduleAt(simTime(), appRegReminderEvent);
 
         // start traceroute
-        traceRouteStartEvent = new cMessage("Content Download Start Event");
+        traceRouteStartEvent = new cMessage("Traceroute Start Event");
         traceRouteStartEvent->setKind(TRACEROUTEAPP_START_TRACEROUTE_EVENT_CODE);
         scheduleAt(simTime(), traceRouteStartEvent);
 
         // Trace timeout event
-        interestRetransmitEvent = new cMessage("Trace timeout");
-        interestRetransmitEvent->setKind(TRACEROUTEAPP_TIMEOUT_EVENT_CODE);
+        traceTimeoutEvent = new cMessage("Trace timeout");
+        traceTimeoutEvent->setKind(TRACEROUTEAPP_TIMEOUT_EVENT_CODE);
+        scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
 
         // register stat signals
         totalInterestsBytesSentSignal = registerSignal("appTotalInterestsBytesSent");
@@ -144,16 +146,17 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             maxHopsAllowed++;
 
             // remember last interest sent time for statistic
-            lastInterestSentTime = simTime();
+            lastTraceSentTime = simTime();
+            //traceSendTime[];
 
             // update stats
             demiurgeModel->incrementNetworkInterestInjectedCount(); //@Lars sollten wir hier nicht unterscheiden -> incrementNetworkTracerouteRqstInjectedCount ? Ja der meinung bin ich auch, ich habe mir noch keine gedanken über die Statistik gemacht.
 
             // write stats
-            emit(totalInterestsBytesSentSignal, (long) tracerouteRqstMsg->getByteLength());
-            emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
+            //emit(totalInterestsBytesSentSignal, (long) tracerouteRqstMsg->getByteLength());
+            //emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
 
-            scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
+            //scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
 
         }
 
@@ -195,7 +198,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             send(tracerouteRqstMsg, "forwarderInOut$o");
 
             // remember last interest sent time for statistic
-            lastInterestSentTime = simTime();
+            lastTraceSentTime = simTime();
 
             // update stats
             demiurgeModel->incrementNetworkInterestInjectedCount();

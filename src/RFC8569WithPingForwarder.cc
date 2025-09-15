@@ -480,7 +480,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
         pitEntry->reversePendingToken_new = 0;
         pitEntry->reversePendingToken_old = 0;
         pitEntry->creationtime = simTime(); //added newly
-        pitEntry->pitEntryType = 0;
+        pitEntry->pitEntryType = Interest;
 
         ArrivalInfo *arrivalInfo = new ArrivalInfo();
         arrivalInfo->receivedFace = arrivalFaceEntry;
@@ -963,7 +963,7 @@ void RFC8569WithPingForwarder::processInterest(InterestMsg *interestMsg)
         pitEntry->segmentNum = interestMsg->getSegmentNum();
         pitEntry->hopLimit = interestMsg->getHopLimit() - 1;
         pitEntry->hopsTravelled = interestMsg->getHopsTravelled() + 1;
-        pitEntry->pitEntryType = 0;
+        pitEntry->pitEntryType = Interest;
 
         ArrivalInfo *arrivalInfo = new ArrivalInfo();
         arrivalInfo->receivedFace = arrivalFaceEntry;
@@ -1659,7 +1659,7 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
     pitEntry->segmentNum = tracerouteRqstMsg->getSegmentNum();
     pitEntry->hopLimit = tracerouteRqstMsg->getHopLimit() - 1;
     pitEntry->hopsTravelled = tracerouteRqstMsg->getHopsTravelled() + 1;
-    pitEntry->pitEntryType = 1;
+    pitEntry->pitEntryType = TracerouteRequest;
 
     ArrivalInfo *arrivalInfo = new ArrivalInfo();
     arrivalInfo->receivedFace = arrivalFaceEntry;
@@ -1923,7 +1923,7 @@ void RFC8569WithPingForwarder::processTracerouteRpl(TracerouteRplMsg *traceroute
         newTracerouteRplMsg->setPayloadAsString(tracerouteRplMsg->getPayloadAsString());
         newTracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE + tracerouteRplMsg->getPayloadSize());
         newTracerouteRplMsg->setPathlabel(pathlabel);
-        newTracerouteRplMsg->setHopsTravelled(tracerouteRplMsg->getHopsTravlled() + 1);
+        newTracerouteRplMsg->setHopsTravelled(tracerouteRplMsg->getHopsTravelled() + 1);
 
         // add the transport address if it exists
         if(arrivalInfo->transportAddress.size() > 0 ){
