@@ -199,6 +199,7 @@ enum TracerouteReplyCodes
 	ReturnCodeForwarderNameMatch = 0;
 	ReturnCodeCSHit = 1;
 	ReturnCodeFIBLocalHit = 2;
+	ReturnCodeNoPath = 3;
 	ReturnCodeHopLimitExceeded = 4;    
 }
 
@@ -212,6 +213,9 @@ packet TracerouteRplMsg
 
     // cache time of content
     simtime_t cachetime;
+    
+    // indicator for previous hop's forwarder
+    bool lastAnswer;
     
      // Pathsteering
     string pathlabel;
