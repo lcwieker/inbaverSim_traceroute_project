@@ -31,6 +31,7 @@ protected:
     string dataNamePrefix;
     int maxHopsAllowed;
     double interestRetransmitTimeout;
+    double startOffset;
     string pathTLV;
     simtime_t TraceStartTime;
 

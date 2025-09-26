@@ -14,6 +14,7 @@ void TraceRouteApp::initialize(int stage)
         dataNamePrefix = par("dataNamePrefix").stringValue();
         maxHopsAllowed = par("maxHopsAllowed");
         interestRetransmitTimeout = par("interestRetransmitTimeout");
+        startOffset = par("startOffset");
         //ftraceSendTime = par("traceSendTime");
 
 
@@ -68,12 +69,12 @@ void TraceRouteApp::initialize(int stage)
         // start traceroute
         traceRouteStartEvent = new cMessage("Traceroute Start Event");
         traceRouteStartEvent->setKind(TRACEROUTEAPP_START_TRACEROUTE_EVENT_CODE);
-        scheduleAt(simTime(), traceRouteStartEvent);
+        scheduleAt(simTime() + startOffset, traceRouteStartEvent);
 
         // Trace timeout event
         traceTimeoutEvent = new cMessage("Trace timeout");
         traceTimeoutEvent->setKind(TRACEROUTEAPP_TIMEOUT_EVENT_CODE);
-        scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
+        scheduleAt(simTime() + startOffset + interestRetransmitTimeout, traceTimeoutEvent);
 
         // register stat signals
         totalInterestsBytesSentSignal = registerSignal("appTotalInterestsBytesSent");
@@ -162,6 +163,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
 
         else if ((tracerouteRplMsg = dynamic_cast<TracerouteRplMsg*>(msg)) != NULL){
 
+            bool finalReply = false;
+
             int rndNum;
             char tempString[128];
             const char* pathTLV;
@@ -176,46 +179,101 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             totalSegments = -1;
             TraceStartTime = simTime();
 
-            // generate 1st interest
-            TracerouteRqstMsg* tracerouteRqstMsg = new TracerouteRqstMsg("Interest");
-            tracerouteRqstMsg->setHopLimit(maxHopsAllowed);
-            tracerouteRqstMsg->setLifetime(simTime() + interestRetransmitTimeout);
-            tracerouteRqstMsg->setPrefixName(requestingPrefixName.c_str());
-            tracerouteRqstMsg->setDataName(requestingDataName.c_str());
-            tracerouteRqstMsg->setVersionName("v01");
-            tracerouteRqstMsg->setSegmentNum(requestedSegNum);
-            tracerouteRqstMsg->setHeaderSize(INBAVER_INTEREST_MSG_HEADER_SIZE);
-            tracerouteRqstMsg->setPayloadSize(0);
-            tracerouteRqstMsg->setHopsTravelled(0);
-            tracerouteRqstMsg->setByteLength(INBAVER_INTEREST_MSG_HEADER_SIZE);
-            tracerouteRqstMsg->setPathlabel(pathTLV);
+            // catch reply code
+            int replyCode = tracerouteRplMsg->getTracerouteReplyCode();
 
-            EV_INFO << simTime() << " Sending next Trace for: " << requestingPrefixName
-                    << " " << requestingDataName << " v01 " << requestedSegNum
-                    << " " << totalSegments << endl;
+            switch(replyCode){
 
-            // send msg to forwarding layer
-            send(tracerouteRqstMsg, "forwarderInOut$o");
+            case 4: //hopLImit
+            {
+                EV_INFO << simTime() << " Received Traceroute Reply for exceed hopLimit:"
+                        << " " << tracerouteRplMsg->getPrefixName()
+                        << " " << tracerouteRplMsg->getDataName()
+                        << " " << tracerouteRplMsg->getVersionName()
+                        << " " << tracerouteRplMsg->getSegmentNum()
+                        << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
+                        << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
+                        << endl;
 
-            // remember last interest sent time for statistic
-            lastTraceSentTime = simTime();
+                // generate new traceroute request
+                TracerouteRqstMsg* tracerouteRqstMsg = new TracerouteRqstMsg("Traceroute Request");
+                tracerouteRqstMsg->setHopLimit(maxHopsAllowed);
+                tracerouteRqstMsg->setLifetime(simTime() + interestRetransmitTimeout);
+                tracerouteRqstMsg->setPrefixName(tracerouteRplMsg->getPrefixName());
+                tracerouteRqstMsg->setDataName(tracerouteRplMsg->getDataName()); //@Lars Traceroute should repeat searching for the same data
+                tracerouteRqstMsg->setVersionName("v01");
+                tracerouteRqstMsg->setSegmentNum(requestedSegNum);
+                tracerouteRqstMsg->setHeaderSize(INBAVER_INTEREST_MSG_HEADER_SIZE);
+                tracerouteRqstMsg->setPayloadSize(0);
+                tracerouteRqstMsg->setHopsTravelled(0);
+                tracerouteRqstMsg->setByteLength(INBAVER_INTEREST_MSG_HEADER_SIZE);
+                tracerouteRqstMsg->setPathlabel(pathTLV);
 
-            // update stats
-            demiurgeModel->incrementNetworkInterestInjectedCount();
+                EV_INFO << simTime() << " Sending next Trace for: " << requestingPrefixName
+                        << " " << requestingDataName << " v01 " << requestedSegNum
+                        << " " << totalSegments << endl;
 
-            // write stats
-            emit(totalInterestsBytesSentSignal, (long) tracerouteRqstMsg->getByteLength());
-            emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
+                // send msg to forwarding layer
+                sendDelayed(tracerouteRqstMsg, uniform(1, 5), "forwarderInOut$o");
 
-            maxHopsAllowed++;
+                // remember last interest sent time for statistic
+                lastTraceSentTime = simTime();
 
-            if (traceTimeoutEvent -> isScheduled()){
+                // update stats
+                demiurgeModel->incrementNetworkInterestInjectedCount();
 
-                cancelEvent(traceTimeoutEvent);
+                // write stats
+                emit(totalInterestsBytesSentSignal, (long) tracerouteRqstMsg->getByteLength());
+                emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
 
-                scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
+                maxHopsAllowed++;
 
+                if (traceTimeoutEvent -> isScheduled()){
+
+                    cancelEvent(traceTimeoutEvent);
+
+                    scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
+
+                }
+                break;
             }
+
+            case 3: //noPath
+            {
+                EV_INFO << simTime() << " Received Traceroute Reply for dead end:"
+                        << " " << tracerouteRplMsg->getPrefixName()
+                        << " " << tracerouteRplMsg->getDataName()
+                        << " " << tracerouteRplMsg->getVersionName()
+                        << " " << tracerouteRplMsg->getSegmentNum()
+                        << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
+                        << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
+                        << endl;
+
+                delete tracerouteRplMsg;
+                break;
+            }
+
+            default: //found in full forwarder match, CS hit or local name
+            {
+                EV_INFO << simTime() << " Received final Traceroute Reply:"
+                        << " " << tracerouteRplMsg->getPrefixName()
+                        << " " << tracerouteRplMsg->getDataName()
+                        << " " << tracerouteRplMsg->getVersionName()
+                        << " " << tracerouteRplMsg->getSegmentNum()
+                        << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
+                        << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
+                        << endl;
+
+                finalReply = true;
+                delete tracerouteRplMsg;
+                break;
+            }
+            }
+
+            if(finalReply){
+                //TODO Auswertung
+            }
+
         }
 
         else if (msg->isSelfMessage() && msg->getKind() == TRACEROUTEAPP_TIMEOUT_EVENT_CODE){
