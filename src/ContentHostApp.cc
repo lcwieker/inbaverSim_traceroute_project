@@ -107,9 +107,9 @@ void ContentHostApp::handleMessage(cMessage *msg)
         else if((tracerouteRqstMsg = dynamic_cast<TracerouteRqstMsg*>(msg)) != NULL){
             processTracerouteRqst(tracerouteRqstMsg);
         }
-//        else {
-//            EV_INFO << " Ignoring message - " << msg->getName() << "\n";
-//
+        else {
+            EV_INFO << " Ignoring message - " << msg->getName() << "\n";
+
 //            //send interest return
 //            InterestRtnMsg* interestRtnMsg = new InterestRtnMsg("Interest Return");
 //            interestRtnMsg->setReturnCode(ReturnCodeTypeNoRoute);
@@ -131,7 +131,7 @@ void ContentHostApp::handleMessage(cMessage *msg)
 //
 //            // send msg to forwarding layer
 //            send(interestRtnMsg, "forwarderInOut$o");
-//        }
+        }
     }
 }
 
@@ -247,7 +247,7 @@ void ContentHostApp::processTracerouteRqst(TracerouteRqstMsg *tracerouteRqstMsg)
                     << " " << tracerouteRqstMsg->getVersionName()
                     << " " << tracerouteRqstMsg->getSegmentNum() << endl;
 
-            // generate stat for received interest size
+            // generate stat for received request size
             emit(totalTracerouteRqstsBytesReceivedSignal, (long) tracerouteRqstMsg->getByteLength());
 
             // look for details of file in list
@@ -264,24 +264,55 @@ void ContentHostApp::processTracerouteRqst(TracerouteRqstMsg *tracerouteRqstMsg)
             }
 
             // unclear if applicable for traceroute requests
-//
-//            // if not found, insert new file details
-//            if (!found) {
-//                hostedContentEntry = new HostedContentEntry;
-//                hostedContentEntry->prefixName = tracerouteRqstMsg->getPrefixName();
-//                hostedContentEntry->dataName = tracerouteRqstMsg->getDataName();
-//                hostedContentEntry->versionName = tracerouteRqstMsg->getVersionName();
-//                hostedContentEntry->totalNumSegments = par("numSegmentsPerFile");
-//                hostedContentList.push_back(hostedContentEntry);
-//
-//                EV_INFO << simTime() << " Content created and added: "
-//                        << tracerouteRqstMsg->getPrefixName()
-//                        << " " << tracerouteRqstMsg->getDataName()
-//                        << " " << tracerouteRqstMsg->getVersionName()
-//                        << " " << tracerouteRqstMsg->getSegmentNum()
-//                        << " " << hostedContentEntry->totalNumSegments << endl;
-//
-//            }
+            // if not found, insert new file details
+            if (!found) {
+                hostedContentEntry = new HostedContentEntry;
+                hostedContentEntry->prefixName = tracerouteRqstMsg->getPrefixName();
+                hostedContentEntry->dataName = tracerouteRqstMsg->getDataName();
+                hostedContentEntry->versionName = tracerouteRqstMsg->getVersionName();
+                hostedContentEntry->totalNumSegments = par("numSegmentsPerFile");
+                hostedContentList.push_back(hostedContentEntry);
+
+                EV_INFO << simTime() << " Content created and added: "
+                        << tracerouteRqstMsg->getPrefixName()
+                        << " " << tracerouteRqstMsg->getDataName()
+                        << " " << tracerouteRqstMsg->getVersionName()
+                        << " " << tracerouteRqstMsg->getSegmentNum()
+                        << " " << hostedContentEntry->totalNumSegments << endl;
+
+                TracerouteRplMsg* tracerouteRplMsg = new TracerouteRplMsg("Traceroute Reply");
+                tracerouteRplMsg->setPrefixName(tracerouteRqstMsg->getPrefixName());
+                tracerouteRplMsg->setDataName(tracerouteRqstMsg->getDataName());
+                tracerouteRplMsg->setVersionName(tracerouteRqstMsg->getVersionName());
+                tracerouteRplMsg->setSegmentNum(tracerouteRqstMsg->getSegmentNum());
+                tracerouteRplMsg->setCachetime(cacheTime);
+                tracerouteRplMsg->setExpirytime(simTime() + cacheTime);
+                tracerouteRplMsg->setHeaderSize(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE);
+                tracerouteRplMsg->setPayloadSize(segmentSize);
+                tracerouteRplMsg->setTotalNumSegments(hostedContentEntry->totalNumSegments);
+                tracerouteRplMsg->setPayloadAsString("");
+                tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE + segmentSize);
+                tracerouteRplMsg->setPathlabel("");
+                tracerouteRplMsg->setLastAnswer(true);
+                tracerouteRplMsg->setTracerouteReplyCode(2); //local application hit
+
+                EV_INFO << simTime() << " Sending TracerouteRpl: "
+                        << tracerouteRplMsg->getPrefixName()
+                        << " " << tracerouteRplMsg->getDataName()
+                        << " " << tracerouteRplMsg->getVersionName()
+                        << " " << tracerouteRplMsg->getSegmentNum()
+                        << " " << hostedContentEntry->totalNumSegments
+                        << " " << simTime() + cacheTime
+                        << " " << segmentSize << endl;
+
+                // send msg to forwarding layer
+                send(tracerouteRplMsg, "forwarderInOut$o");
+
+                // generate stat for sent content obj
+                emit(totalTracerouteRplsBytesSentSignal, (long) tracerouteRplMsg->getByteLength());
+                emit(totalDataBytesSentSignal, (long) tracerouteRplMsg->getPayloadSize());
+
+            }
 
             // requested seg is not valid, send interest return
             if (found){
@@ -326,6 +357,8 @@ void ContentHostApp::processTracerouteRqst(TracerouteRqstMsg *tracerouteRqstMsg)
                     tracerouteRplMsg->setPayloadAsString("");
                     tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE + segmentSize);
                     tracerouteRplMsg->setPathlabel("");
+                    tracerouteRplMsg->setLastAnswer(true);
+                    tracerouteRplMsg->setTracerouteReplyCode(2); //local application hit
 
                     EV_INFO << simTime() << " Sending TracerouteRpl: "
                             << tracerouteRplMsg->getPrefixName()
@@ -344,19 +377,6 @@ void ContentHostApp::processTracerouteRqst(TracerouteRqstMsg *tracerouteRqstMsg)
                     emit(totalDataBytesSentSignal, (long) tracerouteRplMsg->getPayloadSize());
 
                 }
-            } else {
-
-                 // content not found, ignoring message
-                EV_INFO << simTime() << " Content not found:"
-                        << " " << tracerouteRqstMsg->getPrefixName()
-                        << " " << tracerouteRqstMsg->getDataName()
-                        << " " << tracerouteRqstMsg->getVersionName()
-                        << " " << tracerouteRqstMsg->getSegmentNum()
-                        << endl;
-
-                // drop request
-                delete tracerouteRqstMsg;
-                return;
             }
         delete tracerouteRqstMsg;
 }
