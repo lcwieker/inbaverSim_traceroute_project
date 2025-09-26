@@ -28,6 +28,9 @@ out/
 *.txt
 *.png
 res/
+res/*
+src/inbaverSim
+src/inbaverSim_dbg
 
 #apple special 
 .DS_Store
