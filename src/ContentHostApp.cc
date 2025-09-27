@@ -288,9 +288,9 @@ void ContentHostApp::processTracerouteRqst(TracerouteRqstMsg *tracerouteRqstMsg)
                 tracerouteRplMsg->setCachetime(cacheTime);
                 tracerouteRplMsg->setExpirytime(simTime() + cacheTime);
                 tracerouteRplMsg->setHeaderSize(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE);
-                tracerouteRplMsg->setPayloadSize(segmentSize);
+                tracerouteRplMsg->setPayloadSize(opp_strlen(getParentModule()->getName()));
                 tracerouteRplMsg->setTotalNumSegments(hostedContentEntry->totalNumSegments);
-                tracerouteRplMsg->setPayloadAsString("");
+                tracerouteRplMsg->setPayloadAsString(getParentModule()->getName());
                 tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE + segmentSize);
                 tracerouteRplMsg->setPathlabel("");
                 tracerouteRplMsg->setLastAnswer(true);

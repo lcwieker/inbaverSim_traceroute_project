@@ -1530,9 +1530,9 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
         tracerouteRplMsg->setCachetime(csEntry->cachetime);
         tracerouteRplMsg->setExpirytime(csEntry->expirytime);
         tracerouteRplMsg->setHeaderSize(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE);
-        tracerouteRplMsg->setPayloadSize(csEntry->payloadSize);
+        tracerouteRplMsg->setPayloadSize(opp_strlen(getParentModule()->getName()));
         tracerouteRplMsg->setTotalNumSegments(csEntry->totalNumSegments);
-        tracerouteRplMsg->setPayloadAsString(csEntry->payloadAsString.c_str());
+        tracerouteRplMsg->setPayloadAsString(getParentModule()->getName());
         tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE);
         tracerouteRplMsg->setPathlabel(""); //empty pathlabel because this is the first node on the way back
         tracerouteRplMsg->setTracerouteReplyCode(1); // 1 = cache hit
@@ -1621,8 +1621,8 @@ void RFC8569WithPingForwarder::processTracerouteRqst(TracerouteRqstMsg *tracerou
 
     dumpPIT();
 
-    // when there is already a PIT entry, means previous Interests were
-    // received, so add the current Interest to the PIT entry
+    // when there is already a PIT entry, means previous Requests were
+    // received, so add the current one to the PIT entry
     if (pitEntry != NULL) {
 
         // Check if the same Interest was received through the same Face and transport address
