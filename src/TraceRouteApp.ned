@@ -39,6 +39,7 @@ simple TraceRouteApp like IApplication
 //        @signal[appTotalDataBytesReceived](type=long);
 //        @signal[appNetworkInterestRetransmissionCount](type=long);
 //        @signal[appNetworkInterestInjectedCount](type=long);
+		  @signa[tracerouteRtt](type=simtime_t);
 
 		// display icon
         @display("i=block/app");

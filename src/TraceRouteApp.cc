@@ -193,6 +193,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                         << " " << tracerouteRplMsg->getSegmentNum()
                         << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
                         << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
+                        << " at: " << simTime() - lastTraceSentTime simTime()
+                        << " from: " << tracerouteRplMsg->getPayloadAsString()
                         << endl;
 
                 // generate new traceroute request
@@ -217,6 +219,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                 sendDelayed(tracerouteRqstMsg, uniform(1, 5), "forwarderInOut$o");
 
                 // remember last interest sent time for statistic
+                emit(tracerouteRtt, (simtime_t) simTime() - lastTraceSentTime);
                 lastTraceSentTime = simTime();
 
                 // update stats
@@ -247,6 +250,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                         << " " << tracerouteRplMsg->getSegmentNum()
                         << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
                         << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
+                        << " at: " << simTime() - lastTraceSentTime
+                        << " from: " << tracerouteRplMsg->getPayloadAsString()
                         << endl;
 
                 delete tracerouteRplMsg;
@@ -262,6 +267,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                         << " " << tracerouteRplMsg->getSegmentNum()
                         << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
                         << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
+                        << " at: " << simTime() - lastTraceSentTime
+                        << " from: " << tracerouteRplMsg->getPayloadAsString()
                         << endl;
 
                 finalReply = true;
@@ -292,8 +299,8 @@ void TraceRouteApp::finish(){
     }
     delete traceRouteStartEvent;
 
-    if (interestRetransmitEvent -> isScheduled()){
-        cancelEvent(interestRetransmitEvent);
+    if (traceTimeoutEvent -> isScheduled()){
+        cancelEvent(traceTimeoutEvent);
     }
-    delete interestRetransmitEvent;
+    delete traceTimeoutEvent;
 }
