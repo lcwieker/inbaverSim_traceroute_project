@@ -155,6 +155,9 @@ packet InterestRtnMsg
 packet TracerouteRqstMsg
 {
     //====== Traceroute Request Header (IntHdr)
+    
+    // for spreaded forwarding
+    int tracerouteToken;
 
     // number of hops left to travel
     int hopLimit;
@@ -191,6 +194,9 @@ packet TracerouteRqstMsg
     // arrival face ID and type at the forwarding (CCN) layer
     long arrivalFaceID;
     int arrivalFaceType;
+    
+    // for evaluation
+    simtime_t requestStartTime;
 }
 
 
@@ -215,7 +221,7 @@ packet TracerouteRplMsg
     simtime_t cachetime;
     
     // indicator for previous hop's forwarder
-    bool lastAnswer;
+    int tracerouteToken;
     
      // Pathsteering
     string pathlabel;
@@ -251,4 +257,7 @@ packet TracerouteRplMsg
 
     // any payload
     string payloadAsString;
+    
+    // for evaluation
+    simtime_t requestStartTime;
 }

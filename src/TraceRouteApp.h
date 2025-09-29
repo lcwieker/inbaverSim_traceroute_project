@@ -30,6 +30,7 @@ protected:
     string requestedPrefixNames;
     string dataNamePrefix;
     int maxHopsAllowed;
+    int totalHopLimit;
     double interestRetransmitTimeout;
     double startOffset;
     string pathTLV;
@@ -40,6 +41,15 @@ protected:
 
     vector <string> requestedPrefixList;
     vector<vector<simtime_t>> traceSendTime;
+
+    struct DataNode {
+         string pathlabel;
+         string name;
+         simtime_t RTT;
+         bool final;
+     };
+
+     vector<DataNode> dataNodes;
 
     // start traceroute event
     cMessage *traceRouteStartEvent;
@@ -65,7 +75,7 @@ protected:
     simsignal_t totalDataBytesReceivedSignal;
     simsignal_t networkInterestRetransmissionCountSignal;
     simsignal_t networkInterestInjectedCountSignal;
-    simsignal_t tracerouteRtt;
+    simsignal_t tracerouteRttSignal;
 };
 
 #define TRACEROUTEAPP_APP_REG_REM_EVENT_CODE            116

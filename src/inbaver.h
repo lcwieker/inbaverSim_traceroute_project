@@ -160,8 +160,8 @@ typedef struct PITEntry {
     //distinguish interests and traceroute requests
     PitEntryType pitEntryType;
 
-    //only for traceroutes to forward all replies before deletion of PITEntry
-    int numForwarded;
+    //only for traceroutes
+    int tracerouteToken;
 
 } PITEntry;
 

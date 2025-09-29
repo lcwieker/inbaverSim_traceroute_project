@@ -83,6 +83,7 @@ void TraceRouteApp::initialize(int stage)
         totalDataBytesReceivedSignal = registerSignal("appTotalDataBytesReceived");
         networkInterestRetransmissionCountSignal = registerSignal("appNetworkInterestRetransmissionCount");
         networkInterestInjectedCountSignal = registerSignal("appNetworkInterestInjectedCount");
+        tracerouteRttSignal = registerSignal("tracerouteRtt");
     }
     else {
         EV_FATAL << "Something is radically wrong\n";
@@ -136,6 +137,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             tracerouteRqstMsg->setPayloadSize(0);
             tracerouteRqstMsg->setHopsTravelled(0);
             tracerouteRqstMsg->setByteLength(INBAVER_INTEREST_MSG_HEADER_SIZE);
+            tracerouteRqstMsg->setRequestStartTime(simTime());
+            tracerouteRqstMsg->setTracerouteToken(intuniform(100001, 1000000));
 
             EV_INFO << simTime() << " Sending Trace for: " << requestingPrefixName
                     << " " << requestingDataName << " v01 " << requestedSegNum
@@ -158,6 +161,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             //emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
 
             //scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
+
+
 
         }
 
@@ -193,13 +198,14 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                         << " " << tracerouteRplMsg->getSegmentNum()
                         << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
                         << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
-                        << " at: " << simTime() - lastTraceSentTime simTime()
+                        << " at: " << simTime()
+                        << " after: " << simTime() - tracerouteRplMsg->getRequestStartTime()
                         << " from: " << tracerouteRplMsg->getPayloadAsString()
                         << endl;
 
                 // generate new traceroute request
                 TracerouteRqstMsg* tracerouteRqstMsg = new TracerouteRqstMsg("Traceroute Request");
-                tracerouteRqstMsg->setHopLimit(maxHopsAllowed);
+                tracerouteRqstMsg->setHopLimit(tracerouteRplMsg->getHopsTravelled() + 1);
                 tracerouteRqstMsg->setLifetime(simTime() + interestRetransmitTimeout);
                 tracerouteRqstMsg->setPrefixName(tracerouteRplMsg->getPrefixName());
                 tracerouteRqstMsg->setDataName(tracerouteRplMsg->getDataName()); //@Lars Traceroute should repeat searching for the same data
@@ -210,17 +216,22 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                 tracerouteRqstMsg->setHopsTravelled(0);
                 tracerouteRqstMsg->setByteLength(INBAVER_INTEREST_MSG_HEADER_SIZE);
                 tracerouteRqstMsg->setPathlabel(pathTLV);
+                tracerouteRqstMsg->setRequestStartTime(simTime());
+                tracerouteRqstMsg->setTracerouteToken(tracerouteRplMsg->getTracerouteToken());
 
                 EV_INFO << simTime() << " Sending next Trace for: " << requestingPrefixName
                         << " " << requestingDataName << " v01 " << requestedSegNum
                         << " " << totalSegments << endl;
 
+                // for timeout event
+                maxHopsAllowed = tracerouteRqstMsg->getHopLimit();
+
                 // send msg to forwarding layer
-                sendDelayed(tracerouteRqstMsg, uniform(1, 5), "forwarderInOut$o");
+                sendDelayed(tracerouteRqstMsg, 1, "forwarderInOut$o");
 
                 // remember last interest sent time for statistic
-                emit(tracerouteRtt, (simtime_t) simTime() - lastTraceSentTime);
-                lastTraceSentTime = simTime();
+                emit(tracerouteRttSignal, (simtime_t) simTime() - tracerouteRplMsg->getRequestStartTime());
+                //lastTraceSentTime = simTime();
 
                 // update stats
                 demiurgeModel->incrementNetworkInterestInjectedCount();
@@ -229,7 +240,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                 emit(totalInterestsBytesSentSignal, (long) tracerouteRqstMsg->getByteLength());
                 emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
 
-                maxHopsAllowed++;
+                dataNodes.push_back({tracerouteRplMsg->getPathlabel(), tracerouteRplMsg->getPayloadAsString(), (simtime_t)(simTime() - tracerouteRplMsg->getRequestStartTime()),
+                                        false});
 
                 if (traceTimeoutEvent -> isScheduled()){
 
@@ -238,6 +250,17 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                     scheduleAt(simTime() + interestRetransmitTimeout, traceTimeoutEvent);
 
                 }
+
+                EV_INFO << "Scanned nodes so far:\n"
+                        << "Name | Route | RTT"
+                        << endl;
+
+                for(const auto& dataNode : dataNodes){
+                    EV_INFO << dataNode.name << " | " << dataNode.pathlabel << " | " << dataNode.RTT
+                            << endl;
+                }
+
+                delete tracerouteRplMsg;
                 break;
             }
 
@@ -250,9 +273,39 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                         << " " << tracerouteRplMsg->getSegmentNum()
                         << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
                         << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
-                        << " at: " << simTime() - lastTraceSentTime
+                        << " at: " << simTime()
+                        << " after: " << simTime() - tracerouteRplMsg->getRequestStartTime()
                         << " from: " << tracerouteRplMsg->getPayloadAsString()
                         << endl;
+
+                // remember last interest sent time for statistic
+                emit(tracerouteRttSignal, (simtime_t) simTime() - tracerouteRplMsg->getRequestStartTime());
+
+
+                //enlist replying node if not duplicate
+                auto isDuplicate = [&](const DataNode& dn){
+                    return any_of(dataNodes.begin(), dataNodes.end(), [&](const DataNode& existing){
+                        return dn.pathlabel == existing.pathlabel && dn.name == existing.name;
+                    });
+                };
+
+                DataNode newNode{tracerouteRplMsg->getPathlabel(), tracerouteRplMsg->getPayloadAsString(), (simtime_t)(simTime() - tracerouteRplMsg->getRequestStartTime()),
+                                    false};
+
+                if(!isDuplicate(newNode)){
+                    dataNodes.push_back(newNode);
+                }
+
+
+
+                EV_INFO << "Scanned nodes so far:\n"
+                        << "Name | Route | RTT"
+                        << endl;
+
+                for(const auto& dataNode : dataNodes){
+                    EV_INFO << dataNode.name << " | " << dataNode.pathlabel << " | " << dataNode.RTT
+                            << endl;
+                }
 
                 delete tracerouteRplMsg;
                 break;
@@ -267,9 +320,39 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                         << " " << tracerouteRplMsg->getSegmentNum()
                         << " /replyCode: " << tracerouteRplMsg->getTracerouteReplyCode()
                         << " /hopsTravelled: " << tracerouteRplMsg->getHopsTravelled()
-                        << " at: " << simTime() - lastTraceSentTime
+                        << " at: " << simTime()
+                        << " after: " << simTime() - tracerouteRplMsg->getRequestStartTime()
                         << " from: " << tracerouteRplMsg->getPayloadAsString()
                         << endl;
+
+                // remember last interest sent time for statistic
+                emit(tracerouteRttSignal, (simtime_t) simTime() - tracerouteRplMsg->getRequestStartTime());
+
+
+                //enlist replying node if not duplicate
+                auto isDuplicate = [&](const DataNode& dn){
+                    return any_of(dataNodes.begin(), dataNodes.end(), [&](const DataNode& existing){
+                        return dn.pathlabel == existing.pathlabel && dn.name == existing.name;
+                    });
+                };
+
+                DataNode newNode{tracerouteRplMsg->getPathlabel(), tracerouteRplMsg->getPayloadAsString(), (simtime_t)(simTime() - tracerouteRplMsg->getRequestStartTime()),
+                                    true};
+
+                if(!isDuplicate(newNode)){
+                    dataNodes.push_back(newNode);
+                }
+
+
+                EV_INFO << "Scanned nodes so far:\n"
+                        << "Name | Route | RTT"
+                        << endl;
+
+                for(const auto& dataNode : dataNodes){
+                    EV_INFO << dataNode.name << " | " << dataNode.pathlabel << " | " << dataNode.RTT
+                            << endl;
+                }
+
 
                 finalReply = true;
                 delete tracerouteRplMsg;
@@ -279,6 +362,37 @@ void TraceRouteApp::handleMessage(cMessage *msg)
 
             if(finalReply){
                 //TODO Auswertung
+                /* How to:
+                 * 1. In dataNodes, find latest entry with final = true and print name and RTT
+                 * 2. Take pathlabel of said entry, delete the last char for new search
+                 * 3. Find entry with matching pathlabel, print name and RTT
+                 * 4. repeat 2-4 until pathlabel empty
+                 */
+
+
+                EV << "Found Data Source:\n"
+                        << "Name | RTT"
+                        << endl;
+
+                string tempLabel = "";
+                for(auto& dataNode : dataNodes){
+                    if(dataNode.final){
+                        EV << dataNode.name << " | " << dataNode.RTT << endl;
+                        tempLabel = dataNode.pathlabel;
+                        dataNode.final = false;
+                        break;
+                    }
+                }
+
+                while(tempLabel.size() > 0){
+                    tempLabel.pop_back();
+                    for(const auto& dataNode : dataNodes){
+                        if(dataNode.pathlabel == tempLabel){
+                            EV << dataNode.name << " | " << dataNode.RTT << endl;
+                            break;
+                        }
+                    }
+                }
             }
 
         }
@@ -288,6 +402,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                        EV << "Trace timeout. Trace has finished.";
                        maxHopsAllowed = par("maxHopsAllowed");
                        pathTLV = "";
+
+                       finish();
 
         }
 }

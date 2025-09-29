@@ -24,7 +24,7 @@ simple TraceRouteApp like IApplication
         // maximum files stored at requested prefix
         volatile int nextFileSuffix = default(intuniform(0, 9999));
 
-        // maximum hops allowed for Interest to travel
+        // maximum hops allowed for at start
         int maxHopsAllowed = default(1);
 
         // time after which an interest is retransmitted
@@ -39,7 +39,7 @@ simple TraceRouteApp like IApplication
 //        @signal[appTotalDataBytesReceived](type=long);
 //        @signal[appNetworkInterestRetransmissionCount](type=long);
 //        @signal[appNetworkInterestInjectedCount](type=long);
-		  @signa[tracerouteRtt](type=simtime_t);
+		  @signal[tracerouteRtt](type=simtime_t);
 
 		// display icon
         @display("i=block/app");

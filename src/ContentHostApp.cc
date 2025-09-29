@@ -293,8 +293,9 @@ void ContentHostApp::processTracerouteRqst(TracerouteRqstMsg *tracerouteRqstMsg)
                 tracerouteRplMsg->setPayloadAsString(getParentModule()->getName());
                 tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE + segmentSize);
                 tracerouteRplMsg->setPathlabel("");
-                tracerouteRplMsg->setLastAnswer(true);
                 tracerouteRplMsg->setTracerouteReplyCode(2); //local application hit
+                tracerouteRplMsg->setRequestStartTime(tracerouteRqstMsg->getRequestStartTime());
+                tracerouteRplMsg->setTracerouteToken(tracerouteRqstMsg->getTracerouteToken());
 
                 EV_INFO << simTime() << " Sending TracerouteRpl: "
                         << tracerouteRplMsg->getPrefixName()
@@ -357,8 +358,9 @@ void ContentHostApp::processTracerouteRqst(TracerouteRqstMsg *tracerouteRqstMsg)
                     tracerouteRplMsg->setPayloadAsString("");
                     tracerouteRplMsg->setByteLength(INBAVER_TRACEROUTE_RPL_MSG_HEADER_SIZE + segmentSize);
                     tracerouteRplMsg->setPathlabel("");
-                    tracerouteRplMsg->setLastAnswer(true);
                     tracerouteRplMsg->setTracerouteReplyCode(2); //local application hit
+                    tracerouteRplMsg->setRequestStartTime(tracerouteRqstMsg->getRequestStartTime());
+                    tracerouteRplMsg->setTracerouteToken(tracerouteRqstMsg->getTracerouteToken());
 
                     EV_INFO << simTime() << " Sending TracerouteRpl: "
                             << tracerouteRplMsg->getPrefixName()
