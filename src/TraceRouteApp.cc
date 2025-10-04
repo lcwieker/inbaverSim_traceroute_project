@@ -138,7 +138,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             tracerouteRqstMsg->setHopsTravelled(0);
             tracerouteRqstMsg->setByteLength(INBAVER_INTEREST_MSG_HEADER_SIZE);
             tracerouteRqstMsg->setRequestStartTime(simTime());
-            tracerouteRqstMsg->setTracerouteToken(intuniform(100001, 1000000));
+            tracerouteRqstMsg->setTracerouteToken(intuniform(1000001, 10000000));
 
             EV_INFO << simTime() << " Sending Trace for: " << requestingPrefixName
                     << " " << requestingDataName << " v01 " << requestedSegNum
