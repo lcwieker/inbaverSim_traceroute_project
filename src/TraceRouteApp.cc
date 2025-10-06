@@ -182,7 +182,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             requestingDataName = string(tempString);
             requestedSegNum = 0;
             totalSegments = -1;
-            TraceStartTime = simTime();
+            //TraceStartTime = simTime();
 
             // catch reply code
             int replyCode = tracerouteRplMsg->getTracerouteReplyCode();
@@ -361,6 +361,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             }
 
             if(finalReply){
+                emit(tracerouteRuntime, (simtime_t) simTime() - TraceStartTime);
                 //TODO Auswertung
                 /* How to:
                  * 1. In dataNodes, find latest entry with final = true and print name and RTT
