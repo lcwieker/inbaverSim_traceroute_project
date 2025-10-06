@@ -76,6 +76,7 @@ protected:
     simsignal_t networkInterestRetransmissionCountSignal;
     simsignal_t networkInterestInjectedCountSignal;
     simsignal_t tracerouteRttSignal;
+    simsignal_t tracerouteRuntime;
 };
 
 #define TRACEROUTEAPP_APP_REG_REM_EVENT_CODE            116
