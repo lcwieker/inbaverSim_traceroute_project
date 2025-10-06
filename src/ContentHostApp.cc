@@ -57,7 +57,7 @@ void ContentHostApp::initialize(int stage)
         totalInterestsBytesReceivedSignal = registerSignal("appTotalInterestsBytesReceived");
         totalContentObjsBytesSentSignal = registerSignal("appTotalContentObjsBytesSent");
         totalTracerouteRqstsBytesReceivedSignal = registerSignal("appTotalTracerouteRqstsBytesReceived");
-        totalTracerouteRplsBytesSentSignal = registerSignal("appTotalTraceorouteRplsBytesSent");
+        totalTracerouteRplsBytesSentSignal = registerSignal("appTotalTracerouteRplsBytesSent");
         totalDataBytesSentSignal = registerSignal("appTotalDataBytesSent");
 
     } else {

@@ -237,8 +237,8 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                 demiurgeModel->incrementNetworkInterestInjectedCount();
 
                 // write stats
-                emit(totalInterestsBytesSentSignal, (long) tracerouteRqstMsg->getByteLength());
-                emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
+                //emit(totalInterestsBytesSentSignal, (long) tracerouteRqstMsg->getByteLength());
+                //emit(networkInterestInjectedCountSignal, demiurgeModel->getNetworkInterestInjectedCount());
 
                 dataNodes.push_back({tracerouteRplMsg->getPathlabel(), tracerouteRplMsg->getPayloadAsString(), (simtime_t)(simTime() - tracerouteRplMsg->getRequestStartTime()),
                                         false});
