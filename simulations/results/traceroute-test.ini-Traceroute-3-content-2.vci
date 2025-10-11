@@ -1,0 +1,3522 @@
+file 2596355 1760186324                                         
+version 3
+run Traceroute-3-content-2-20251011-14:38:44-1500
+attr configname Traceroute-3-content
+attr datetime 20251011-14:38:44
+attr datetimef 20251011-143844
+attr experiment Traceroute-3-content
+attr inifile traceroute-test.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TracerouteTestNetwork
+attr processid 1500
+attr repetition 2
+attr replication #2
+attr resultdir results/
+attr runnumber 2
+attr seedset 2
+config image-path ../../inet4.5/images
+config **.**.forwarder "\"RFC8569WithPingForwarder\""
+config **.contentServer1.numApps 1
+config **.contentServer1.app[0].typename ContentHostApp
+config **.contentServer1.app[0].hostedPrefixNames "\"ccnx://spacetime.com/\""
+config **.contentServer1.app[0].dataNamePrefix "\"sptm\""
+config **.contentServer1.app[0].segmentSize 1000byte
+config **.contentServer1.app[0].numSegmentsPerFile "intuniform(5, 20)"
+config **.contentServer1.app[0].cacheTime 2h
+config **.contentServer2.numApps 1
+config **.contentServer2.app[0].typename ContentHostApp
+config **.contentServer2.app[0].hostedPrefixNames "\"ccnx://relativity.com/\""
+config **.contentServer2.app[0].dataNamePrefix "\"rltv\""
+config **.contentServer2.app[0].segmentSize 1000byte
+config **.contentServer2.app[0].numSegmentsPerFile "intuniform(5, 20)"
+config **.contentServer2.app[0].cacheTime 2h
+config **.contentServer3.numApps 1
+config **.contentServer3.app[0].typename ContentHostApp
+config **.contentServer3.app[0].hostedPrefixNames "\"ccnx://uni-bremen.de/\""
+config **.contentServer3.app[0].dataNamePrefix "\"unib\""
+config **.contentServer3.app[0].segmentSize 1000byte
+config **.contentServer3.app[0].numSegmentsPerFile intuniform(5,20)
+config **.contentServer3.app[0].cacheTime 2h
+config **.accessRouter1.accessRouterNumWiredTransports 4
+config **.accessRouter2.accessRouterNumWiredTransports 4
+config **.accessRouter3.accessRouterNumWiredTransports 4
+config **.wiredNode*.numApps 2
+config **.wiredNode*.app[0].typename ContentDownloadApp
+config **.wiredNode*.app[0].interContentDownloadInterval "uniform(100.0s, 150.0s)"
+config **.wiredNode*.app[0].interestRetransmitTimeout 120s
+config **.wiredNode*.app[0].nextFileSuffix "intuniform(0, 99)"
+config **.wiredNode*.app[0].maxHopsAllowed 9
+config **.wiredNode*.app[1].typename TraceRouteApp
+config **.wiredNode*.app[1].startOffset 150s
+config **.wiredNode*.app[1].interestRetransmitTimeout 120s
+config **.wiredNode*.app[1].maxHopsAllowed 1
+config **.wiredNode*.app[1].totalHopLimit 12
+config **.wiredNode1.app[0].requestedPrefixNames "\"ccnx://spacetime.com/\""
+config **.wiredNode1.app[0].dataNamePrefix "\"sptm\""
+config **.wiredNode1.app[1].requestedPrefixNames "\"ccnx://spacetime.com/\""
+config **.wiredNode1.app[1].dataNamePrefix "\"sptm\""
+config **.wiredNode4.app[0].requestedPrefixNames "\"ccnx://spacetime.com/\""
+config **.wiredNode4.app[0].dataNamePrefix "\"sptm\""
+config **.wiredNode4.app[1].requestedPrefixNames "\"ccnx://spacetime.com/\""
+config **.wiredNode4.app[1].dataNamePrefix "\"sptm\""
+config **.wiredNode7.app[0].requestedPrefixNames "\"ccnx://spacetime.com/\""
+config **.wiredNode7.app[0].dataNamePrefix "\"sptm\""
+config **.wiredNode7.app[1].requestedPrefixNames "\"ccnx://spacetime.com/\""
+config **.wiredNode7.app[1].dataNamePrefix "\"sptm\""
+config **.wiredNode2.app[0].requestedPrefixNames "\"ccnx://relativity.com/\""
+config **.wiredNode2.app[0].dataNamePrefix "\"rltv\""
+config **.wiredNode2.app[1].requestedPrefixNames "\"ccnx://relativity.com/\""
+config **.wiredNode2.app[1].dataNamePrefix "\"rltv\""
+config **.wiredNode5.app[0].requestedPrefixNames "\"ccnx://relativity.com/\""
+config **.wiredNode5.app[0].dataNamePrefix "\"rltv\""
+config **.wiredNode5.app[1].requestedPrefixNames "\"ccnx://relativity.com/\""
+config **.wiredNode5.app[1].dataNamePrefix "\"rltv\""
+config **.wiredNode8.app[0].requestedPrefixNames "\"ccnx://relativity.com/\""
+config **.wiredNode8.app[0].dataNamePrefix "\"rltv\""
+config **.wiredNode8.app[1].requestedPrefixNames "\"ccnx://relativity.com/\""
+config **.wiredNode8.app[1].dataNamePrefix "\"rltv\""
+config **.wiredNode3.app[0].requestedPrefixNames "\"ccnx://uni-bremen.de/\""
+config **.wiredNode3.app[0].dataNamePrefix "\"unib\""
+config **.wiredNode3.app[1].requestedPrefixNames "\"ccnx://uni-bremen.de/\""
+config **.wiredNode3.app[1].dataNamePrefix "\"unib\""
+config **.wiredNode6.app[0].requestedPrefixNames "\"ccnx://uni-bremen.de/\""
+config **.wiredNode6.app[0].dataNamePrefix "\"unib\""
+config **.wiredNode6.app[1].requestedPrefixNames "\"ccnx://uni-bremen.de/\""
+config **.wiredNode6.app[1].dataNamePrefix "\"unib\""
+config **.wiredNode9.app[0].requestedPrefixNames "\"ccnx://uni-bremen.de/\""
+config **.wiredNode9.app[0].dataNamePrefix "\"unib\""
+config **.wiredNode9.app[1].requestedPrefixNames "\"ccnx://uni-bremen.de/\""
+config **.wiredNode9.app[1].dataNamePrefix "\"unib\""
+config **.coreRouter1.coreRouterNumWiredTransports 3
+config **.coreRouter2.coreRouterNumWiredTransports 4
+config **.coreRouter3.coreRouterNumWiredTransports 2
+config **.coreRouter4.coreRouterNumWiredTransports 4
+config **.coreRouter5.coreRouterNumWiredTransports 4
+config **.coreRouter6.coreRouterNumWiredTransports 3
+config **.coreRouter7.coreRouterNumWiredTransports 2
+config **.coreRouter8.coreRouterNumWiredTransports 2
+config **.coreRouter9.coreRouterNumWiredTransports 3
+config **.coreRouter10.coreRouterNumWiredTransports 3
+config **.coreRouter11.coreRouterNumWiredTransports 2
+config **.coreRouter12.coreRouterNumWiredTransports 2
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 400m
+config **.constraintAreaMaxY 400m
+config **.constraintAreaMaxZ 0m
+config **.updateInterval 1s
+config **.initFromDisplayString true
+config network TracerouteTestNetwork
+config sim-time-limit 1200s
+config repeat 5
+config num-rngs 8
+config seed-0-mt 1000
+config seed-1-mt 2000
+config seed-2-mt 3000
+config seed-3-mt 4000
+config seed-4-mt 5000
+config seed-5-mt 6000
+config seed-6-mt 7000
+config seed-7-mt 8000
+config simtime-resolution ms
+config **.demiurge.rng-0 1
+config **.numen.rng-0 2
+config **.app[*].rng-0 3
+config **.fwd.rng-0 4
+config **.wired[*].rng-0 5
+config **.wireless[*].rng-0 6
+config **.mobility.rng-0 7
+config result-dir results/
+config output-vector-file results//traceroute-test.ini-Traceroute-3-content-2.vec
+config output-scalar-file results//traceroute-test.ini-Traceroute-3-content-2.sca
+config **.vector-recording true
+config **.scalar-recording true
+config **.statistic-recording true
+config record-eventlog false
+config eventlog-file results//traceroute-test.ini-Traceroute-3-content-2.elog
+
+vector 0 TracerouteTestNetwork.accessRouter1 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 1 TracerouteTestNetwork.accessRouter1 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 2 TracerouteTestNetwork.accessRouter1 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 3 TracerouteTestNetwork.accessRouter1 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 4 TracerouteTestNetwork.accessRouter1 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 5 TracerouteTestNetwork.accessRouter1 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 6 TracerouteTestNetwork.accessRouter1 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 7 TracerouteTestNetwork.accessRouter1 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 8 TracerouteTestNetwork.accessRouter1 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 9 TracerouteTestNetwork.accessRouter1 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 10 TracerouteTestNetwork.accessRouter1 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 11 TracerouteTestNetwork.accessRouter1 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 12 TracerouteTestNetwork.accessRouter1 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 13 TracerouteTestNetwork.accessRouter1 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 14 TracerouteTestNetwork.accessRouter1 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 15 TracerouteTestNetwork.accessRouter1 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 16 TracerouteTestNetwork.accessRouter1 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 17 TracerouteTestNetwork.accessRouter1 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 18 TracerouteTestNetwork.accessRouter1 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 19 TracerouteTestNetwork.accessRouter1 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 20 TracerouteTestNetwork.accessRouter1 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 21 TracerouteTestNetwork.accessRouter1 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 22 TracerouteTestNetwork.accessRouter1 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 23 TracerouteTestNetwork.accessRouter1 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 24 TracerouteTestNetwork.accessRouter1 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 25 TracerouteTestNetwork.accessRouter1 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 26 TracerouteTestNetwork.accessRouter1 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 27 TracerouteTestNetwork.accessRouter1 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 28 TracerouteTestNetwork.accessRouter1 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 29 TracerouteTestNetwork.accessRouter1 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 30 TracerouteTestNetwork.accessRouter1 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 31 TracerouteTestNetwork.accessRouter1 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 32 TracerouteTestNetwork.accessRouter1 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 33 TracerouteTestNetwork.accessRouter2 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 34 TracerouteTestNetwork.accessRouter2 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 35 TracerouteTestNetwork.accessRouter2 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 36 TracerouteTestNetwork.accessRouter2 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 37 TracerouteTestNetwork.accessRouter2 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 38 TracerouteTestNetwork.accessRouter2 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 39 TracerouteTestNetwork.accessRouter2 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 40 TracerouteTestNetwork.accessRouter2 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 41 TracerouteTestNetwork.accessRouter2 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 42 TracerouteTestNetwork.accessRouter2 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 43 TracerouteTestNetwork.accessRouter2 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 44 TracerouteTestNetwork.accessRouter2 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 45 TracerouteTestNetwork.accessRouter2 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 46 TracerouteTestNetwork.accessRouter2 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 47 TracerouteTestNetwork.accessRouter2 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 48 TracerouteTestNetwork.accessRouter2 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 49 TracerouteTestNetwork.accessRouter2 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 50 TracerouteTestNetwork.accessRouter2 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 51 TracerouteTestNetwork.accessRouter2 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 52 TracerouteTestNetwork.accessRouter2 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 53 TracerouteTestNetwork.accessRouter2 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 54 TracerouteTestNetwork.accessRouter2 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 55 TracerouteTestNetwork.accessRouter2 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 56 TracerouteTestNetwork.accessRouter2 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 57 TracerouteTestNetwork.accessRouter2 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 58 TracerouteTestNetwork.accessRouter2 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 59 TracerouteTestNetwork.accessRouter2 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 60 TracerouteTestNetwork.accessRouter2 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 61 TracerouteTestNetwork.accessRouter2 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 62 TracerouteTestNetwork.accessRouter2 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 63 TracerouteTestNetwork.accessRouter2 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 64 TracerouteTestNetwork.accessRouter2 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 65 TracerouteTestNetwork.accessRouter2 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 66 TracerouteTestNetwork.accessRouter3 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 67 TracerouteTestNetwork.accessRouter3 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 68 TracerouteTestNetwork.accessRouter3 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 69 TracerouteTestNetwork.accessRouter3 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 70 TracerouteTestNetwork.accessRouter3 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 71 TracerouteTestNetwork.accessRouter3 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 72 TracerouteTestNetwork.accessRouter3 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 73 TracerouteTestNetwork.accessRouter3 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 74 TracerouteTestNetwork.accessRouter3 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 75 TracerouteTestNetwork.accessRouter3 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 76 TracerouteTestNetwork.accessRouter3 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 77 TracerouteTestNetwork.accessRouter3 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 78 TracerouteTestNetwork.accessRouter3 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 79 TracerouteTestNetwork.accessRouter3 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 80 TracerouteTestNetwork.accessRouter3 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 81 TracerouteTestNetwork.accessRouter3 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 82 TracerouteTestNetwork.accessRouter3 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 83 TracerouteTestNetwork.accessRouter3 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 84 TracerouteTestNetwork.accessRouter3 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 85 TracerouteTestNetwork.accessRouter3 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 86 TracerouteTestNetwork.accessRouter3 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 87 TracerouteTestNetwork.accessRouter3 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 88 TracerouteTestNetwork.accessRouter3 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 89 TracerouteTestNetwork.accessRouter3 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 90 TracerouteTestNetwork.accessRouter3 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 91 TracerouteTestNetwork.accessRouter3 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 92 TracerouteTestNetwork.accessRouter3 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 93 TracerouteTestNetwork.accessRouter3 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 94 TracerouteTestNetwork.accessRouter3 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 95 TracerouteTestNetwork.accessRouter3 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 96 TracerouteTestNetwork.accessRouter3 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 97 TracerouteTestNetwork.accessRouter3 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 98 TracerouteTestNetwork.accessRouter3 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 99 TracerouteTestNetwork.wiredNode1.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 100 TracerouteTestNetwork.wiredNode1.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 101 TracerouteTestNetwork.wiredNode1.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 102 TracerouteTestNetwork.wiredNode1.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 103 TracerouteTestNetwork.wiredNode1.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 104 TracerouteTestNetwork.wiredNode1.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 105 TracerouteTestNetwork.wiredNode1 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 106 TracerouteTestNetwork.wiredNode1 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 107 TracerouteTestNetwork.wiredNode1 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 108 TracerouteTestNetwork.wiredNode1 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 109 TracerouteTestNetwork.wiredNode1 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 110 TracerouteTestNetwork.wiredNode1 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 111 TracerouteTestNetwork.wiredNode1 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 112 TracerouteTestNetwork.wiredNode1 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 113 TracerouteTestNetwork.wiredNode1 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 114 TracerouteTestNetwork.wiredNode1 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 115 TracerouteTestNetwork.wiredNode1 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 116 TracerouteTestNetwork.wiredNode1 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 117 TracerouteTestNetwork.wiredNode1 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 118 TracerouteTestNetwork.wiredNode1 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 119 TracerouteTestNetwork.wiredNode1 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 120 TracerouteTestNetwork.wiredNode1 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 121 TracerouteTestNetwork.wiredNode1 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 122 TracerouteTestNetwork.wiredNode1 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 123 TracerouteTestNetwork.wiredNode1 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 124 TracerouteTestNetwork.wiredNode1 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 125 TracerouteTestNetwork.wiredNode1 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 126 TracerouteTestNetwork.wiredNode1 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 127 TracerouteTestNetwork.wiredNode1 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 128 TracerouteTestNetwork.wiredNode1 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 129 TracerouteTestNetwork.wiredNode1 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 130 TracerouteTestNetwork.wiredNode1 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 131 TracerouteTestNetwork.wiredNode1 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 132 TracerouteTestNetwork.wiredNode1 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 133 TracerouteTestNetwork.wiredNode1 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 134 TracerouteTestNetwork.wiredNode1 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 135 TracerouteTestNetwork.wiredNode1 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 136 TracerouteTestNetwork.wiredNode1 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 137 TracerouteTestNetwork.wiredNode1 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 138 TracerouteTestNetwork.wiredNode2.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 139 TracerouteTestNetwork.wiredNode2.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 140 TracerouteTestNetwork.wiredNode2.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 141 TracerouteTestNetwork.wiredNode2.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 142 TracerouteTestNetwork.wiredNode2.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 143 TracerouteTestNetwork.wiredNode2.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 144 TracerouteTestNetwork.wiredNode2 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 145 TracerouteTestNetwork.wiredNode2 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 146 TracerouteTestNetwork.wiredNode2 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 147 TracerouteTestNetwork.wiredNode2 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 148 TracerouteTestNetwork.wiredNode2 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 149 TracerouteTestNetwork.wiredNode2 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 150 TracerouteTestNetwork.wiredNode2 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 151 TracerouteTestNetwork.wiredNode2 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 152 TracerouteTestNetwork.wiredNode2 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 153 TracerouteTestNetwork.wiredNode2 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 154 TracerouteTestNetwork.wiredNode2 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 155 TracerouteTestNetwork.wiredNode2 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 156 TracerouteTestNetwork.wiredNode2 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 157 TracerouteTestNetwork.wiredNode2 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 158 TracerouteTestNetwork.wiredNode2 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 159 TracerouteTestNetwork.wiredNode2 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 160 TracerouteTestNetwork.wiredNode2 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 161 TracerouteTestNetwork.wiredNode2 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 162 TracerouteTestNetwork.wiredNode2 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 163 TracerouteTestNetwork.wiredNode2 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 164 TracerouteTestNetwork.wiredNode2 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 165 TracerouteTestNetwork.wiredNode2 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 166 TracerouteTestNetwork.wiredNode2 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 167 TracerouteTestNetwork.wiredNode2 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 168 TracerouteTestNetwork.wiredNode2 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 169 TracerouteTestNetwork.wiredNode2 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 170 TracerouteTestNetwork.wiredNode2 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 171 TracerouteTestNetwork.wiredNode2 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 172 TracerouteTestNetwork.wiredNode2 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 173 TracerouteTestNetwork.wiredNode2 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 174 TracerouteTestNetwork.wiredNode2 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 175 TracerouteTestNetwork.wiredNode2 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 176 TracerouteTestNetwork.wiredNode2 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 177 TracerouteTestNetwork.wiredNode3.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 178 TracerouteTestNetwork.wiredNode3.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 179 TracerouteTestNetwork.wiredNode3.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 180 TracerouteTestNetwork.wiredNode3.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 181 TracerouteTestNetwork.wiredNode3.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 182 TracerouteTestNetwork.wiredNode3.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 183 TracerouteTestNetwork.wiredNode3 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 184 TracerouteTestNetwork.wiredNode3 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 185 TracerouteTestNetwork.wiredNode3 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 186 TracerouteTestNetwork.wiredNode3 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 187 TracerouteTestNetwork.wiredNode3 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 188 TracerouteTestNetwork.wiredNode3 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 189 TracerouteTestNetwork.wiredNode3 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 190 TracerouteTestNetwork.wiredNode3 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 191 TracerouteTestNetwork.wiredNode3 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 192 TracerouteTestNetwork.wiredNode3 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 193 TracerouteTestNetwork.wiredNode3 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 194 TracerouteTestNetwork.wiredNode3 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 195 TracerouteTestNetwork.wiredNode3 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 196 TracerouteTestNetwork.wiredNode3 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 197 TracerouteTestNetwork.wiredNode3 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 198 TracerouteTestNetwork.wiredNode3 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 199 TracerouteTestNetwork.wiredNode3 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 200 TracerouteTestNetwork.wiredNode3 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 201 TracerouteTestNetwork.wiredNode3 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 202 TracerouteTestNetwork.wiredNode3 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 203 TracerouteTestNetwork.wiredNode3 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 204 TracerouteTestNetwork.wiredNode3 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 205 TracerouteTestNetwork.wiredNode3 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 206 TracerouteTestNetwork.wiredNode3 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 207 TracerouteTestNetwork.wiredNode3 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 208 TracerouteTestNetwork.wiredNode3 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 209 TracerouteTestNetwork.wiredNode3 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 210 TracerouteTestNetwork.wiredNode3 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 211 TracerouteTestNetwork.wiredNode3 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 212 TracerouteTestNetwork.wiredNode3 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 213 TracerouteTestNetwork.wiredNode3 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 214 TracerouteTestNetwork.wiredNode3 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 215 TracerouteTestNetwork.wiredNode3 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 216 TracerouteTestNetwork.wiredNode4.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 217 TracerouteTestNetwork.wiredNode4.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 218 TracerouteTestNetwork.wiredNode4.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 219 TracerouteTestNetwork.wiredNode4.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 220 TracerouteTestNetwork.wiredNode4.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 221 TracerouteTestNetwork.wiredNode4.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 222 TracerouteTestNetwork.wiredNode4 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 223 TracerouteTestNetwork.wiredNode4 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 224 TracerouteTestNetwork.wiredNode4 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 225 TracerouteTestNetwork.wiredNode4 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 226 TracerouteTestNetwork.wiredNode4 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 227 TracerouteTestNetwork.wiredNode4 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 228 TracerouteTestNetwork.wiredNode4 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 229 TracerouteTestNetwork.wiredNode4 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 230 TracerouteTestNetwork.wiredNode4 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 231 TracerouteTestNetwork.wiredNode4 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 232 TracerouteTestNetwork.wiredNode4 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 233 TracerouteTestNetwork.wiredNode4 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 234 TracerouteTestNetwork.wiredNode4 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 235 TracerouteTestNetwork.wiredNode4 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 236 TracerouteTestNetwork.wiredNode4 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 237 TracerouteTestNetwork.wiredNode4 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 238 TracerouteTestNetwork.wiredNode4 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 239 TracerouteTestNetwork.wiredNode4 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 240 TracerouteTestNetwork.wiredNode4 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 241 TracerouteTestNetwork.wiredNode4 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 242 TracerouteTestNetwork.wiredNode4 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 243 TracerouteTestNetwork.wiredNode4 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 244 TracerouteTestNetwork.wiredNode4 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 245 TracerouteTestNetwork.wiredNode4 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 246 TracerouteTestNetwork.wiredNode4 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 247 TracerouteTestNetwork.wiredNode4 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 248 TracerouteTestNetwork.wiredNode4 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 249 TracerouteTestNetwork.wiredNode4 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 250 TracerouteTestNetwork.wiredNode4 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 251 TracerouteTestNetwork.wiredNode4 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 252 TracerouteTestNetwork.wiredNode4 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 253 TracerouteTestNetwork.wiredNode4 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 254 TracerouteTestNetwork.wiredNode4 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 255 TracerouteTestNetwork.wiredNode5.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 256 TracerouteTestNetwork.wiredNode5.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 257 TracerouteTestNetwork.wiredNode5.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 258 TracerouteTestNetwork.wiredNode5.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 259 TracerouteTestNetwork.wiredNode5.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 260 TracerouteTestNetwork.wiredNode5.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 261 TracerouteTestNetwork.wiredNode5 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 262 TracerouteTestNetwork.wiredNode5 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 263 TracerouteTestNetwork.wiredNode5 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 264 TracerouteTestNetwork.wiredNode5 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 265 TracerouteTestNetwork.wiredNode5 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 266 TracerouteTestNetwork.wiredNode5 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 267 TracerouteTestNetwork.wiredNode5 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 268 TracerouteTestNetwork.wiredNode5 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 269 TracerouteTestNetwork.wiredNode5 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 270 TracerouteTestNetwork.wiredNode5 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 271 TracerouteTestNetwork.wiredNode5 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 272 TracerouteTestNetwork.wiredNode5 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 273 TracerouteTestNetwork.wiredNode5 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 274 TracerouteTestNetwork.wiredNode5 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 275 TracerouteTestNetwork.wiredNode5 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 276 TracerouteTestNetwork.wiredNode5 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 277 TracerouteTestNetwork.wiredNode5 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 278 TracerouteTestNetwork.wiredNode5 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 279 TracerouteTestNetwork.wiredNode5 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 280 TracerouteTestNetwork.wiredNode5 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 281 TracerouteTestNetwork.wiredNode5 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 282 TracerouteTestNetwork.wiredNode5 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 283 TracerouteTestNetwork.wiredNode5 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 284 TracerouteTestNetwork.wiredNode5 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 285 TracerouteTestNetwork.wiredNode5 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 286 TracerouteTestNetwork.wiredNode5 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 287 TracerouteTestNetwork.wiredNode5 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 288 TracerouteTestNetwork.wiredNode5 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 289 TracerouteTestNetwork.wiredNode5 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 290 TracerouteTestNetwork.wiredNode5 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 291 TracerouteTestNetwork.wiredNode5 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 292 TracerouteTestNetwork.wiredNode5 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 293 TracerouteTestNetwork.wiredNode5 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 294 TracerouteTestNetwork.wiredNode6.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 295 TracerouteTestNetwork.wiredNode6.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 296 TracerouteTestNetwork.wiredNode6.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 297 TracerouteTestNetwork.wiredNode6.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 298 TracerouteTestNetwork.wiredNode6.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 299 TracerouteTestNetwork.wiredNode6.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 300 TracerouteTestNetwork.wiredNode6 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 301 TracerouteTestNetwork.wiredNode6 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 302 TracerouteTestNetwork.wiredNode6 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 303 TracerouteTestNetwork.wiredNode6 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 304 TracerouteTestNetwork.wiredNode6 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 305 TracerouteTestNetwork.wiredNode6 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 306 TracerouteTestNetwork.wiredNode6 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 307 TracerouteTestNetwork.wiredNode6 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 308 TracerouteTestNetwork.wiredNode6 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 309 TracerouteTestNetwork.wiredNode6 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 310 TracerouteTestNetwork.wiredNode6 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 311 TracerouteTestNetwork.wiredNode6 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 312 TracerouteTestNetwork.wiredNode6 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 313 TracerouteTestNetwork.wiredNode6 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 314 TracerouteTestNetwork.wiredNode6 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 315 TracerouteTestNetwork.wiredNode6 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 316 TracerouteTestNetwork.wiredNode6 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 317 TracerouteTestNetwork.wiredNode6 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 318 TracerouteTestNetwork.wiredNode6 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 319 TracerouteTestNetwork.wiredNode6 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 320 TracerouteTestNetwork.wiredNode6 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 321 TracerouteTestNetwork.wiredNode6 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 322 TracerouteTestNetwork.wiredNode6 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 323 TracerouteTestNetwork.wiredNode6 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 324 TracerouteTestNetwork.wiredNode6 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 325 TracerouteTestNetwork.wiredNode6 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 326 TracerouteTestNetwork.wiredNode6 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 327 TracerouteTestNetwork.wiredNode6 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 328 TracerouteTestNetwork.wiredNode6 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 329 TracerouteTestNetwork.wiredNode6 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 330 TracerouteTestNetwork.wiredNode6 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 331 TracerouteTestNetwork.wiredNode6 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 332 TracerouteTestNetwork.wiredNode6 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 333 TracerouteTestNetwork.wiredNode7.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 334 TracerouteTestNetwork.wiredNode7.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 335 TracerouteTestNetwork.wiredNode7.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 336 TracerouteTestNetwork.wiredNode7.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 337 TracerouteTestNetwork.wiredNode7.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 338 TracerouteTestNetwork.wiredNode7.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 339 TracerouteTestNetwork.wiredNode7 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 340 TracerouteTestNetwork.wiredNode7 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 341 TracerouteTestNetwork.wiredNode7 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 342 TracerouteTestNetwork.wiredNode7 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 343 TracerouteTestNetwork.wiredNode7 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 344 TracerouteTestNetwork.wiredNode7 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 345 TracerouteTestNetwork.wiredNode7 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 346 TracerouteTestNetwork.wiredNode7 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 347 TracerouteTestNetwork.wiredNode7 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 348 TracerouteTestNetwork.wiredNode7 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 349 TracerouteTestNetwork.wiredNode7 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 350 TracerouteTestNetwork.wiredNode7 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 351 TracerouteTestNetwork.wiredNode7 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 352 TracerouteTestNetwork.wiredNode7 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 353 TracerouteTestNetwork.wiredNode7 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 354 TracerouteTestNetwork.wiredNode7 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 355 TracerouteTestNetwork.wiredNode7 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 356 TracerouteTestNetwork.wiredNode7 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 357 TracerouteTestNetwork.wiredNode7 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 358 TracerouteTestNetwork.wiredNode7 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 359 TracerouteTestNetwork.wiredNode7 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 360 TracerouteTestNetwork.wiredNode7 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 361 TracerouteTestNetwork.wiredNode7 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 362 TracerouteTestNetwork.wiredNode7 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 363 TracerouteTestNetwork.wiredNode7 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 364 TracerouteTestNetwork.wiredNode7 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 365 TracerouteTestNetwork.wiredNode7 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 366 TracerouteTestNetwork.wiredNode7 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 367 TracerouteTestNetwork.wiredNode7 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 368 TracerouteTestNetwork.wiredNode7 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 369 TracerouteTestNetwork.wiredNode7 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 370 TracerouteTestNetwork.wiredNode7 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 371 TracerouteTestNetwork.wiredNode7 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 372 TracerouteTestNetwork.wiredNode8.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 373 TracerouteTestNetwork.wiredNode8.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 374 TracerouteTestNetwork.wiredNode8.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 375 TracerouteTestNetwork.wiredNode8.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 376 TracerouteTestNetwork.wiredNode8.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 377 TracerouteTestNetwork.wiredNode8.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 378 TracerouteTestNetwork.wiredNode8 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 379 TracerouteTestNetwork.wiredNode8 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 380 TracerouteTestNetwork.wiredNode8 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 381 TracerouteTestNetwork.wiredNode8 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 382 TracerouteTestNetwork.wiredNode8 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 383 TracerouteTestNetwork.wiredNode8 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 384 TracerouteTestNetwork.wiredNode8 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 385 TracerouteTestNetwork.wiredNode8 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 386 TracerouteTestNetwork.wiredNode8 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 387 TracerouteTestNetwork.wiredNode8 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 388 TracerouteTestNetwork.wiredNode8 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 389 TracerouteTestNetwork.wiredNode8 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 390 TracerouteTestNetwork.wiredNode8 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 391 TracerouteTestNetwork.wiredNode8 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 392 TracerouteTestNetwork.wiredNode8 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 393 TracerouteTestNetwork.wiredNode8 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 394 TracerouteTestNetwork.wiredNode8 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 395 TracerouteTestNetwork.wiredNode8 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 396 TracerouteTestNetwork.wiredNode8 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 397 TracerouteTestNetwork.wiredNode8 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 398 TracerouteTestNetwork.wiredNode8 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 399 TracerouteTestNetwork.wiredNode8 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 400 TracerouteTestNetwork.wiredNode8 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 401 TracerouteTestNetwork.wiredNode8 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 402 TracerouteTestNetwork.wiredNode8 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 403 TracerouteTestNetwork.wiredNode8 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 404 TracerouteTestNetwork.wiredNode8 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 405 TracerouteTestNetwork.wiredNode8 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 406 TracerouteTestNetwork.wiredNode8 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 407 TracerouteTestNetwork.wiredNode8 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 408 TracerouteTestNetwork.wiredNode8 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 409 TracerouteTestNetwork.wiredNode8 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 410 TracerouteTestNetwork.wiredNode8 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 411 TracerouteTestNetwork.wiredNode9.app[0] appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 412 TracerouteTestNetwork.wiredNode9.app[0] appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 413 TracerouteTestNetwork.wiredNode9.app[0] appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 414 TracerouteTestNetwork.wiredNode9.app[0] appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 415 TracerouteTestNetwork.wiredNode9.app[0] appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 416 TracerouteTestNetwork.wiredNode9.app[0] appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 417 TracerouteTestNetwork.wiredNode9 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 418 TracerouteTestNetwork.wiredNode9 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 419 TracerouteTestNetwork.wiredNode9 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 420 TracerouteTestNetwork.wiredNode9 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 421 TracerouteTestNetwork.wiredNode9 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 422 TracerouteTestNetwork.wiredNode9 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 423 TracerouteTestNetwork.wiredNode9 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 424 TracerouteTestNetwork.wiredNode9 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 425 TracerouteTestNetwork.wiredNode9 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 426 TracerouteTestNetwork.wiredNode9 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 427 TracerouteTestNetwork.wiredNode9 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 428 TracerouteTestNetwork.wiredNode9 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 429 TracerouteTestNetwork.wiredNode9 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 430 TracerouteTestNetwork.wiredNode9 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 431 TracerouteTestNetwork.wiredNode9 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 432 TracerouteTestNetwork.wiredNode9 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 433 TracerouteTestNetwork.wiredNode9 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 434 TracerouteTestNetwork.wiredNode9 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 435 TracerouteTestNetwork.wiredNode9 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 436 TracerouteTestNetwork.wiredNode9 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 437 TracerouteTestNetwork.wiredNode9 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 438 TracerouteTestNetwork.wiredNode9 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 439 TracerouteTestNetwork.wiredNode9 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 440 TracerouteTestNetwork.wiredNode9 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 441 TracerouteTestNetwork.wiredNode9 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 442 TracerouteTestNetwork.wiredNode9 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 443 TracerouteTestNetwork.wiredNode9 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 444 TracerouteTestNetwork.wiredNode9 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 445 TracerouteTestNetwork.wiredNode9 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 446 TracerouteTestNetwork.wiredNode9 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 447 TracerouteTestNetwork.wiredNode9 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 448 TracerouteTestNetwork.wiredNode9 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 449 TracerouteTestNetwork.wiredNode9 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 450 TracerouteTestNetwork.coreRouter1 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 451 TracerouteTestNetwork.coreRouter1 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 452 TracerouteTestNetwork.coreRouter1 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 453 TracerouteTestNetwork.coreRouter1 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 454 TracerouteTestNetwork.coreRouter1 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 455 TracerouteTestNetwork.coreRouter1 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 456 TracerouteTestNetwork.coreRouter1 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 457 TracerouteTestNetwork.coreRouter1 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 458 TracerouteTestNetwork.coreRouter1 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 459 TracerouteTestNetwork.coreRouter1 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 460 TracerouteTestNetwork.coreRouter1 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 461 TracerouteTestNetwork.coreRouter1 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 462 TracerouteTestNetwork.coreRouter1 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 463 TracerouteTestNetwork.coreRouter1 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 464 TracerouteTestNetwork.coreRouter1 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 465 TracerouteTestNetwork.coreRouter1 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 466 TracerouteTestNetwork.coreRouter1 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 467 TracerouteTestNetwork.coreRouter1 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 468 TracerouteTestNetwork.coreRouter1 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 469 TracerouteTestNetwork.coreRouter1 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 470 TracerouteTestNetwork.coreRouter1 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 471 TracerouteTestNetwork.coreRouter1 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 472 TracerouteTestNetwork.coreRouter1 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 473 TracerouteTestNetwork.coreRouter1 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 474 TracerouteTestNetwork.coreRouter1 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 475 TracerouteTestNetwork.coreRouter1 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 476 TracerouteTestNetwork.coreRouter1 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 477 TracerouteTestNetwork.coreRouter1 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 478 TracerouteTestNetwork.coreRouter1 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 479 TracerouteTestNetwork.coreRouter1 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 480 TracerouteTestNetwork.coreRouter1 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 481 TracerouteTestNetwork.coreRouter1 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 482 TracerouteTestNetwork.coreRouter1 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 483 TracerouteTestNetwork.coreRouter2 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 484 TracerouteTestNetwork.coreRouter2 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 485 TracerouteTestNetwork.coreRouter2 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 486 TracerouteTestNetwork.coreRouter2 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 487 TracerouteTestNetwork.coreRouter2 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 488 TracerouteTestNetwork.coreRouter2 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 489 TracerouteTestNetwork.coreRouter2 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 490 TracerouteTestNetwork.coreRouter2 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 491 TracerouteTestNetwork.coreRouter2 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 492 TracerouteTestNetwork.coreRouter2 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 493 TracerouteTestNetwork.coreRouter2 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 494 TracerouteTestNetwork.coreRouter2 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 495 TracerouteTestNetwork.coreRouter2 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 496 TracerouteTestNetwork.coreRouter2 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 497 TracerouteTestNetwork.coreRouter2 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 498 TracerouteTestNetwork.coreRouter2 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 499 TracerouteTestNetwork.coreRouter2 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 500 TracerouteTestNetwork.coreRouter2 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 501 TracerouteTestNetwork.coreRouter2 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 502 TracerouteTestNetwork.coreRouter2 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 503 TracerouteTestNetwork.coreRouter2 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 504 TracerouteTestNetwork.coreRouter2 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 505 TracerouteTestNetwork.coreRouter2 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 506 TracerouteTestNetwork.coreRouter2 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 507 TracerouteTestNetwork.coreRouter2 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 508 TracerouteTestNetwork.coreRouter2 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 509 TracerouteTestNetwork.coreRouter2 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 510 TracerouteTestNetwork.coreRouter2 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 511 TracerouteTestNetwork.coreRouter2 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 512 TracerouteTestNetwork.coreRouter2 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 513 TracerouteTestNetwork.coreRouter2 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 514 TracerouteTestNetwork.coreRouter2 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 515 TracerouteTestNetwork.coreRouter2 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 516 TracerouteTestNetwork.coreRouter3 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 517 TracerouteTestNetwork.coreRouter3 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 518 TracerouteTestNetwork.coreRouter3 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 519 TracerouteTestNetwork.coreRouter3 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 520 TracerouteTestNetwork.coreRouter3 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 521 TracerouteTestNetwork.coreRouter3 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 522 TracerouteTestNetwork.coreRouter3 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 523 TracerouteTestNetwork.coreRouter3 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 524 TracerouteTestNetwork.coreRouter3 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 525 TracerouteTestNetwork.coreRouter3 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 526 TracerouteTestNetwork.coreRouter3 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 527 TracerouteTestNetwork.coreRouter3 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 528 TracerouteTestNetwork.coreRouter3 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 529 TracerouteTestNetwork.coreRouter3 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 530 TracerouteTestNetwork.coreRouter3 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 531 TracerouteTestNetwork.coreRouter3 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 532 TracerouteTestNetwork.coreRouter3 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 533 TracerouteTestNetwork.coreRouter3 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 534 TracerouteTestNetwork.coreRouter3 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 535 TracerouteTestNetwork.coreRouter3 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 536 TracerouteTestNetwork.coreRouter3 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 537 TracerouteTestNetwork.coreRouter3 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 538 TracerouteTestNetwork.coreRouter3 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 539 TracerouteTestNetwork.coreRouter3 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 540 TracerouteTestNetwork.coreRouter3 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 541 TracerouteTestNetwork.coreRouter3 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 542 TracerouteTestNetwork.coreRouter3 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 543 TracerouteTestNetwork.coreRouter3 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 544 TracerouteTestNetwork.coreRouter3 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 545 TracerouteTestNetwork.coreRouter3 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 546 TracerouteTestNetwork.coreRouter3 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 547 TracerouteTestNetwork.coreRouter3 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 548 TracerouteTestNetwork.coreRouter3 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 549 TracerouteTestNetwork.coreRouter4 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 550 TracerouteTestNetwork.coreRouter4 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 551 TracerouteTestNetwork.coreRouter4 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 552 TracerouteTestNetwork.coreRouter4 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 553 TracerouteTestNetwork.coreRouter4 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 554 TracerouteTestNetwork.coreRouter4 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 555 TracerouteTestNetwork.coreRouter4 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 556 TracerouteTestNetwork.coreRouter4 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 557 TracerouteTestNetwork.coreRouter4 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 558 TracerouteTestNetwork.coreRouter4 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 559 TracerouteTestNetwork.coreRouter4 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 560 TracerouteTestNetwork.coreRouter4 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 561 TracerouteTestNetwork.coreRouter4 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 562 TracerouteTestNetwork.coreRouter4 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 563 TracerouteTestNetwork.coreRouter4 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 564 TracerouteTestNetwork.coreRouter4 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 565 TracerouteTestNetwork.coreRouter4 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 566 TracerouteTestNetwork.coreRouter4 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 567 TracerouteTestNetwork.coreRouter4 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 568 TracerouteTestNetwork.coreRouter4 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 569 TracerouteTestNetwork.coreRouter4 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 570 TracerouteTestNetwork.coreRouter4 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 571 TracerouteTestNetwork.coreRouter4 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 572 TracerouteTestNetwork.coreRouter4 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 573 TracerouteTestNetwork.coreRouter4 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 574 TracerouteTestNetwork.coreRouter4 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 575 TracerouteTestNetwork.coreRouter4 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 576 TracerouteTestNetwork.coreRouter4 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 577 TracerouteTestNetwork.coreRouter4 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 578 TracerouteTestNetwork.coreRouter4 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 579 TracerouteTestNetwork.coreRouter4 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 580 TracerouteTestNetwork.coreRouter4 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 581 TracerouteTestNetwork.coreRouter4 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 582 TracerouteTestNetwork.coreRouter5 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 583 TracerouteTestNetwork.coreRouter5 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 584 TracerouteTestNetwork.coreRouter5 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 585 TracerouteTestNetwork.coreRouter5 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 586 TracerouteTestNetwork.coreRouter5 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 587 TracerouteTestNetwork.coreRouter5 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 588 TracerouteTestNetwork.coreRouter5 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 589 TracerouteTestNetwork.coreRouter5 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 590 TracerouteTestNetwork.coreRouter5 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 591 TracerouteTestNetwork.coreRouter5 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 592 TracerouteTestNetwork.coreRouter5 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 593 TracerouteTestNetwork.coreRouter5 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 594 TracerouteTestNetwork.coreRouter5 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 595 TracerouteTestNetwork.coreRouter5 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 596 TracerouteTestNetwork.coreRouter5 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 597 TracerouteTestNetwork.coreRouter5 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 598 TracerouteTestNetwork.coreRouter5 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 599 TracerouteTestNetwork.coreRouter5 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 600 TracerouteTestNetwork.coreRouter5 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 601 TracerouteTestNetwork.coreRouter5 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 602 TracerouteTestNetwork.coreRouter5 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 603 TracerouteTestNetwork.coreRouter5 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 604 TracerouteTestNetwork.coreRouter5 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 605 TracerouteTestNetwork.coreRouter5 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 606 TracerouteTestNetwork.coreRouter5 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 607 TracerouteTestNetwork.coreRouter5 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 608 TracerouteTestNetwork.coreRouter5 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 609 TracerouteTestNetwork.coreRouter5 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 610 TracerouteTestNetwork.coreRouter5 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 611 TracerouteTestNetwork.coreRouter5 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 612 TracerouteTestNetwork.coreRouter5 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 613 TracerouteTestNetwork.coreRouter5 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 614 TracerouteTestNetwork.coreRouter5 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 615 TracerouteTestNetwork.coreRouter6 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 616 TracerouteTestNetwork.coreRouter6 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 617 TracerouteTestNetwork.coreRouter6 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 618 TracerouteTestNetwork.coreRouter6 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 619 TracerouteTestNetwork.coreRouter6 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 620 TracerouteTestNetwork.coreRouter6 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 621 TracerouteTestNetwork.coreRouter6 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 622 TracerouteTestNetwork.coreRouter6 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 623 TracerouteTestNetwork.coreRouter6 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 624 TracerouteTestNetwork.coreRouter6 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 625 TracerouteTestNetwork.coreRouter6 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 626 TracerouteTestNetwork.coreRouter6 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 627 TracerouteTestNetwork.coreRouter6 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 628 TracerouteTestNetwork.coreRouter6 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 629 TracerouteTestNetwork.coreRouter6 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 630 TracerouteTestNetwork.coreRouter6 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 631 TracerouteTestNetwork.coreRouter6 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 632 TracerouteTestNetwork.coreRouter6 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 633 TracerouteTestNetwork.coreRouter6 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 634 TracerouteTestNetwork.coreRouter6 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 635 TracerouteTestNetwork.coreRouter6 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 636 TracerouteTestNetwork.coreRouter6 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 637 TracerouteTestNetwork.coreRouter6 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 638 TracerouteTestNetwork.coreRouter6 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 639 TracerouteTestNetwork.coreRouter6 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 640 TracerouteTestNetwork.coreRouter6 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 641 TracerouteTestNetwork.coreRouter6 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 642 TracerouteTestNetwork.coreRouter6 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 643 TracerouteTestNetwork.coreRouter6 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 644 TracerouteTestNetwork.coreRouter6 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 645 TracerouteTestNetwork.coreRouter6 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 646 TracerouteTestNetwork.coreRouter6 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 647 TracerouteTestNetwork.coreRouter6 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 648 TracerouteTestNetwork.coreRouter7 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 649 TracerouteTestNetwork.coreRouter7 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 650 TracerouteTestNetwork.coreRouter7 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 651 TracerouteTestNetwork.coreRouter7 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 652 TracerouteTestNetwork.coreRouter7 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 653 TracerouteTestNetwork.coreRouter7 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 654 TracerouteTestNetwork.coreRouter7 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 655 TracerouteTestNetwork.coreRouter7 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 656 TracerouteTestNetwork.coreRouter7 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 657 TracerouteTestNetwork.coreRouter7 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 658 TracerouteTestNetwork.coreRouter7 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 659 TracerouteTestNetwork.coreRouter7 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 660 TracerouteTestNetwork.coreRouter7 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 661 TracerouteTestNetwork.coreRouter7 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 662 TracerouteTestNetwork.coreRouter7 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 663 TracerouteTestNetwork.coreRouter7 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 664 TracerouteTestNetwork.coreRouter7 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 665 TracerouteTestNetwork.coreRouter7 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 666 TracerouteTestNetwork.coreRouter7 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 667 TracerouteTestNetwork.coreRouter7 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 668 TracerouteTestNetwork.coreRouter7 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 669 TracerouteTestNetwork.coreRouter7 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 670 TracerouteTestNetwork.coreRouter7 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 671 TracerouteTestNetwork.coreRouter7 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 672 TracerouteTestNetwork.coreRouter7 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 673 TracerouteTestNetwork.coreRouter7 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 674 TracerouteTestNetwork.coreRouter7 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 675 TracerouteTestNetwork.coreRouter7 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 676 TracerouteTestNetwork.coreRouter7 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 677 TracerouteTestNetwork.coreRouter7 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 678 TracerouteTestNetwork.coreRouter7 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 679 TracerouteTestNetwork.coreRouter7 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 680 TracerouteTestNetwork.coreRouter7 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 681 TracerouteTestNetwork.coreRouter8 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 682 TracerouteTestNetwork.coreRouter8 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 683 TracerouteTestNetwork.coreRouter8 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 684 TracerouteTestNetwork.coreRouter8 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 685 TracerouteTestNetwork.coreRouter8 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 686 TracerouteTestNetwork.coreRouter8 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 687 TracerouteTestNetwork.coreRouter8 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 688 TracerouteTestNetwork.coreRouter8 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 689 TracerouteTestNetwork.coreRouter8 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 690 TracerouteTestNetwork.coreRouter8 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 691 TracerouteTestNetwork.coreRouter8 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 692 TracerouteTestNetwork.coreRouter8 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 693 TracerouteTestNetwork.coreRouter8 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 694 TracerouteTestNetwork.coreRouter8 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 695 TracerouteTestNetwork.coreRouter8 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 696 TracerouteTestNetwork.coreRouter8 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 697 TracerouteTestNetwork.coreRouter8 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 698 TracerouteTestNetwork.coreRouter8 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 699 TracerouteTestNetwork.coreRouter8 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 700 TracerouteTestNetwork.coreRouter8 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 701 TracerouteTestNetwork.coreRouter8 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 702 TracerouteTestNetwork.coreRouter8 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 703 TracerouteTestNetwork.coreRouter8 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 704 TracerouteTestNetwork.coreRouter8 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 705 TracerouteTestNetwork.coreRouter8 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 706 TracerouteTestNetwork.coreRouter8 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 707 TracerouteTestNetwork.coreRouter8 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 708 TracerouteTestNetwork.coreRouter8 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 709 TracerouteTestNetwork.coreRouter8 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 710 TracerouteTestNetwork.coreRouter8 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 711 TracerouteTestNetwork.coreRouter8 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 712 TracerouteTestNetwork.coreRouter8 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 713 TracerouteTestNetwork.coreRouter8 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 714 TracerouteTestNetwork.coreRouter9 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 715 TracerouteTestNetwork.coreRouter9 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 716 TracerouteTestNetwork.coreRouter9 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 717 TracerouteTestNetwork.coreRouter9 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 718 TracerouteTestNetwork.coreRouter9 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 719 TracerouteTestNetwork.coreRouter9 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 720 TracerouteTestNetwork.coreRouter9 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 721 TracerouteTestNetwork.coreRouter9 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 722 TracerouteTestNetwork.coreRouter9 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 723 TracerouteTestNetwork.coreRouter9 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 724 TracerouteTestNetwork.coreRouter9 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 725 TracerouteTestNetwork.coreRouter9 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 726 TracerouteTestNetwork.coreRouter9 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 727 TracerouteTestNetwork.coreRouter9 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 728 TracerouteTestNetwork.coreRouter9 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 729 TracerouteTestNetwork.coreRouter9 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 730 TracerouteTestNetwork.coreRouter9 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 731 TracerouteTestNetwork.coreRouter9 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 732 TracerouteTestNetwork.coreRouter9 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 733 TracerouteTestNetwork.coreRouter9 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 734 TracerouteTestNetwork.coreRouter9 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 735 TracerouteTestNetwork.coreRouter9 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 736 TracerouteTestNetwork.coreRouter9 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 737 TracerouteTestNetwork.coreRouter9 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 738 TracerouteTestNetwork.coreRouter9 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 739 TracerouteTestNetwork.coreRouter9 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 740 TracerouteTestNetwork.coreRouter9 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 741 TracerouteTestNetwork.coreRouter9 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 742 TracerouteTestNetwork.coreRouter9 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 743 TracerouteTestNetwork.coreRouter9 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 744 TracerouteTestNetwork.coreRouter9 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 745 TracerouteTestNetwork.coreRouter9 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 746 TracerouteTestNetwork.coreRouter9 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 747 TracerouteTestNetwork.coreRouter10 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 748 TracerouteTestNetwork.coreRouter10 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 749 TracerouteTestNetwork.coreRouter10 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 750 TracerouteTestNetwork.coreRouter10 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 751 TracerouteTestNetwork.coreRouter10 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 752 TracerouteTestNetwork.coreRouter10 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 753 TracerouteTestNetwork.coreRouter10 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 754 TracerouteTestNetwork.coreRouter10 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 755 TracerouteTestNetwork.coreRouter10 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 756 TracerouteTestNetwork.coreRouter10 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 757 TracerouteTestNetwork.coreRouter10 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 758 TracerouteTestNetwork.coreRouter10 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 759 TracerouteTestNetwork.coreRouter10 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 760 TracerouteTestNetwork.coreRouter10 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 761 TracerouteTestNetwork.coreRouter10 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 762 TracerouteTestNetwork.coreRouter10 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 763 TracerouteTestNetwork.coreRouter10 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 764 TracerouteTestNetwork.coreRouter10 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 765 TracerouteTestNetwork.coreRouter10 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 766 TracerouteTestNetwork.coreRouter10 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 767 TracerouteTestNetwork.coreRouter10 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 768 TracerouteTestNetwork.coreRouter10 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 769 TracerouteTestNetwork.coreRouter10 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 770 TracerouteTestNetwork.coreRouter10 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 771 TracerouteTestNetwork.coreRouter10 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 772 TracerouteTestNetwork.coreRouter10 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 773 TracerouteTestNetwork.coreRouter10 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 774 TracerouteTestNetwork.coreRouter10 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 775 TracerouteTestNetwork.coreRouter10 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 776 TracerouteTestNetwork.coreRouter10 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 777 TracerouteTestNetwork.coreRouter10 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 778 TracerouteTestNetwork.coreRouter10 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 779 TracerouteTestNetwork.coreRouter10 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 780 TracerouteTestNetwork.coreRouter11 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 781 TracerouteTestNetwork.coreRouter11 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 782 TracerouteTestNetwork.coreRouter11 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 783 TracerouteTestNetwork.coreRouter11 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 784 TracerouteTestNetwork.coreRouter11 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 785 TracerouteTestNetwork.coreRouter11 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 786 TracerouteTestNetwork.coreRouter11 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 787 TracerouteTestNetwork.coreRouter11 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 788 TracerouteTestNetwork.coreRouter11 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 789 TracerouteTestNetwork.coreRouter11 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 790 TracerouteTestNetwork.coreRouter11 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 791 TracerouteTestNetwork.coreRouter11 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 792 TracerouteTestNetwork.coreRouter11 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 793 TracerouteTestNetwork.coreRouter11 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 794 TracerouteTestNetwork.coreRouter11 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 795 TracerouteTestNetwork.coreRouter11 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 796 TracerouteTestNetwork.coreRouter11 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 797 TracerouteTestNetwork.coreRouter11 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 798 TracerouteTestNetwork.coreRouter11 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 799 TracerouteTestNetwork.coreRouter11 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 800 TracerouteTestNetwork.coreRouter11 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 801 TracerouteTestNetwork.coreRouter11 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 802 TracerouteTestNetwork.coreRouter11 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 803 TracerouteTestNetwork.coreRouter11 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 804 TracerouteTestNetwork.coreRouter11 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 805 TracerouteTestNetwork.coreRouter11 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 806 TracerouteTestNetwork.coreRouter11 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 807 TracerouteTestNetwork.coreRouter11 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 808 TracerouteTestNetwork.coreRouter11 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 809 TracerouteTestNetwork.coreRouter11 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 810 TracerouteTestNetwork.coreRouter11 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 811 TracerouteTestNetwork.coreRouter11 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 812 TracerouteTestNetwork.coreRouter11 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 813 TracerouteTestNetwork.coreRouter12 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 814 TracerouteTestNetwork.coreRouter12 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 815 TracerouteTestNetwork.coreRouter12 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 816 TracerouteTestNetwork.coreRouter12 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 817 TracerouteTestNetwork.coreRouter12 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 818 TracerouteTestNetwork.coreRouter12 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 819 TracerouteTestNetwork.coreRouter12 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 820 TracerouteTestNetwork.coreRouter12 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 821 TracerouteTestNetwork.coreRouter12 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 822 TracerouteTestNetwork.coreRouter12 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 823 TracerouteTestNetwork.coreRouter12 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 824 TracerouteTestNetwork.coreRouter12 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 825 TracerouteTestNetwork.coreRouter12 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 826 TracerouteTestNetwork.coreRouter12 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 827 TracerouteTestNetwork.coreRouter12 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 828 TracerouteTestNetwork.coreRouter12 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 829 TracerouteTestNetwork.coreRouter12 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 830 TracerouteTestNetwork.coreRouter12 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 831 TracerouteTestNetwork.coreRouter12 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 832 TracerouteTestNetwork.coreRouter12 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 833 TracerouteTestNetwork.coreRouter12 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 834 TracerouteTestNetwork.coreRouter12 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 835 TracerouteTestNetwork.coreRouter12 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 836 TracerouteTestNetwork.coreRouter12 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 837 TracerouteTestNetwork.coreRouter12 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 838 TracerouteTestNetwork.coreRouter12 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 839 TracerouteTestNetwork.coreRouter12 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 840 TracerouteTestNetwork.coreRouter12 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 841 TracerouteTestNetwork.coreRouter12 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 842 TracerouteTestNetwork.coreRouter12 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 843 TracerouteTestNetwork.coreRouter12 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 844 TracerouteTestNetwork.coreRouter12 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 845 TracerouteTestNetwork.coreRouter12 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 846 TracerouteTestNetwork.contentServer1 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 847 TracerouteTestNetwork.contentServer1 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 848 TracerouteTestNetwork.contentServer1 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 849 TracerouteTestNetwork.contentServer1 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 850 TracerouteTestNetwork.contentServer1 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 851 TracerouteTestNetwork.contentServer1 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 852 TracerouteTestNetwork.contentServer1 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 853 TracerouteTestNetwork.contentServer1 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 854 TracerouteTestNetwork.contentServer1 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 855 TracerouteTestNetwork.contentServer1 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 856 TracerouteTestNetwork.contentServer1 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 857 TracerouteTestNetwork.contentServer1 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 858 TracerouteTestNetwork.contentServer1 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 859 TracerouteTestNetwork.contentServer1 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 860 TracerouteTestNetwork.contentServer1 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 861 TracerouteTestNetwork.contentServer1 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 862 TracerouteTestNetwork.contentServer1 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 863 TracerouteTestNetwork.contentServer1 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 864 TracerouteTestNetwork.contentServer1 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 865 TracerouteTestNetwork.contentServer1 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 866 TracerouteTestNetwork.contentServer1 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 867 TracerouteTestNetwork.contentServer1 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 868 TracerouteTestNetwork.contentServer1 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 869 TracerouteTestNetwork.contentServer1 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 870 TracerouteTestNetwork.contentServer1 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 871 TracerouteTestNetwork.contentServer1 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 872 TracerouteTestNetwork.contentServer1 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 873 TracerouteTestNetwork.contentServer1 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 874 TracerouteTestNetwork.contentServer1 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 875 TracerouteTestNetwork.contentServer1 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 876 TracerouteTestNetwork.contentServer1 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 877 TracerouteTestNetwork.contentServer1 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 878 TracerouteTestNetwork.contentServer1 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 879 TracerouteTestNetwork.contentServer2 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 880 TracerouteTestNetwork.contentServer2 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 881 TracerouteTestNetwork.contentServer2 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 882 TracerouteTestNetwork.contentServer2 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 883 TracerouteTestNetwork.contentServer2 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 884 TracerouteTestNetwork.contentServer2 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 885 TracerouteTestNetwork.contentServer2 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 886 TracerouteTestNetwork.contentServer2 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 887 TracerouteTestNetwork.contentServer2 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 888 TracerouteTestNetwork.contentServer2 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 889 TracerouteTestNetwork.contentServer2 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 890 TracerouteTestNetwork.contentServer2 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 891 TracerouteTestNetwork.contentServer2 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 892 TracerouteTestNetwork.contentServer2 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 893 TracerouteTestNetwork.contentServer2 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 894 TracerouteTestNetwork.contentServer2 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 895 TracerouteTestNetwork.contentServer2 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 896 TracerouteTestNetwork.contentServer2 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 897 TracerouteTestNetwork.contentServer2 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 898 TracerouteTestNetwork.contentServer2 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 899 TracerouteTestNetwork.contentServer2 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 900 TracerouteTestNetwork.contentServer2 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 901 TracerouteTestNetwork.contentServer2 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 902 TracerouteTestNetwork.contentServer2 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 903 TracerouteTestNetwork.contentServer2 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 904 TracerouteTestNetwork.contentServer2 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 905 TracerouteTestNetwork.contentServer2 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 906 TracerouteTestNetwork.contentServer2 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 907 TracerouteTestNetwork.contentServer2 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 908 TracerouteTestNetwork.contentServer2 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 909 TracerouteTestNetwork.contentServer2 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 910 TracerouteTestNetwork.contentServer2 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 911 TracerouteTestNetwork.contentServer2 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 912 TracerouteTestNetwork.contentServer3 appContentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appContentDownloadDuration
+vector 913 TracerouteTestNetwork.contentServer3 appSegmentDownloadDuration:vector ETV
+attr recordingmode vector
+attr source appSegmentDownloadDuration
+vector 914 TracerouteTestNetwork.contentServer3 appTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesSent
+vector 915 TracerouteTestNetwork.contentServer3 appRetransmissionInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source appRetransmissionInterestsBytesSent
+vector 916 TracerouteTestNetwork.contentServer3 appTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesReceived
+vector 917 TracerouteTestNetwork.contentServer3 appTotalTracerouteRqstsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesSent
+vector 918 TracerouteTestNetwork.contentServer3 appTotalTracerouteRplsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesReceived
+vector 919 TracerouteTestNetwork.contentServer3 appTotalDataBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesReceived
+vector 920 TracerouteTestNetwork.contentServer3 appTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalInterestsBytesReceived
+vector 921 TracerouteTestNetwork.contentServer3 appTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalContentObjsBytesSent
+vector 922 TracerouteTestNetwork.contentServer3 appTotalTracerouteRqstsBytesReceived:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRqstsBytesReceived
+vector 923 TracerouteTestNetwork.contentServer3 appTotalTracerouteRplsBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalTracerouteRplsBytesSent
+vector 924 TracerouteTestNetwork.contentServer3 appTotalDataBytesSent:vector ETV
+attr recordingmode vector
+attr source appTotalDataBytesSent
+vector 925 TracerouteTestNetwork.contentServer3 fwdTotalInterestsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesReceived
+vector 926 TracerouteTestNetwork.contentServer3 fwdTotalInterestRtnsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesReceived
+vector 927 TracerouteTestNetwork.contentServer3 fwdTotalContentObjsBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesReceived
+vector 928 TracerouteTestNetwork.contentServer3 fwdTotalTracerouteRqstBytesReceived:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesReceived
+vector 929 TracerouteTestNetwork.contentServer3 fwdTotalInterestsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestsBytesSent
+vector 930 TracerouteTestNetwork.contentServer3 fwdTotalInterestRtnsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalInterestRtnsBytesSent
+vector 931 TracerouteTestNetwork.contentServer3 fwdTotalContentObjsBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalContentObjsBytesSent
+vector 932 TracerouteTestNetwork.contentServer3 fwdTotalTracerouteRqstBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRqstBytesSent
+vector 933 TracerouteTestNetwork.contentServer3 fwdTotalTracerouteRplBytesSent:vector ETV
+attr recordingmode vector
+attr source fwdTotalTracerouteRplBytesSent
+vector 934 TracerouteTestNetwork.contentServer3 fwdCacheSizeBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheSizeBytes
+vector 935 TracerouteTestNetwork.contentServer3 fwdCacheAdditionsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheAdditionsBytes
+vector 936 TracerouteTestNetwork.contentServer3 fwdCacheRemovalsBytes:vector ETV
+attr recordingmode vector
+attr source fwdCacheRemovalsBytes
+vector 937 TracerouteTestNetwork.contentServer3 fwdFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdFIBEntryCount
+vector 938 TracerouteTestNetwork.contentServer3 fwdPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdPITEntryCount
+vector 939 TracerouteTestNetwork.contentServer3 fwdCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheHitRatio
+vector 940 TracerouteTestNetwork.contentServer3 fwdCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdCacheMissRatio
+vector 941 TracerouteTestNetwork.contentServer3 transportTotalWiredBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesReceived
+vector 942 TracerouteTestNetwork.contentServer3 transportTotalWiredBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWiredBytesSent
+vector 943 TracerouteTestNetwork.contentServer3 transportTotalWirelessBytesReceived:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesReceived
+vector 944 TracerouteTestNetwork.contentServer3 transportTotalWirelessBytesSent:vector ETV
+attr recordingmode vector
+attr source transportTotalWirelessBytesSent
+vector 945 TracerouteTestNetwork appNetworkInterestRetransmissionCount:vector ETV
+attr recordingmode vector
+attr source appNetworkInterestRetransmissionCount
+vector 946 TracerouteTestNetwork appNetworkInterestInjectedCount:vector ETV
+attr recordingmode vector
+attr source appNetworkInterestInjectedCount
+vector 947 TracerouteTestNetwork fwdNetworkCacheHitRatio:vector ETV
+attr recordingmode vector
+attr source fwdNetworkCacheHitRatio
+vector 948 TracerouteTestNetwork fwdNetworkCacheMissRatio:vector ETV
+attr recordingmode vector
+attr source fwdNetworkCacheMissRatio
+vector 949 TracerouteTestNetwork fwdInterestToContentRatio:vector ETV
+attr recordingmode vector
+attr source fwdInterestToContentRatio
+vector 950 TracerouteTestNetwork fwdRequestToReplyRatio:vector ETV
+attr recordingmode vector
+attr source fwdRequestToReplyRatio
+vector 951 TracerouteTestNetwork fwdTotalTraffic:vector ETV
+attr recordingmode vector
+attr source fwdTotalTraffic
+vector 952 TracerouteTestNetwork fwdTotalTrafficBytes:vector ETV
+attr recordingmode vector
+attr source fwdTotalTrafficBytes
+vector 953 TracerouteTestNetwork fwdtotalExpiredPITCountSignal:vector ETV
+attr recordingmode vector
+attr source fwdtotalExpiredPITCountSignal
+vector 954 TracerouteTestNetwork fwdtotalSatisfiedPITCountSignal:vector ETV
+attr recordingmode vector
+attr source fwdtotalSatisfiedPITCountSignal
+vector 955 TracerouteTestNetwork fwddurationOfPITEntrySignal:vector ETV
+attr recordingmode vector
+attr source fwddurationOfPITEntrySignal
+vector 956 TracerouteTestNetwork fwdtotalCacheEntriesCountSignal:vector ETV
+attr recordingmode vector
+attr source fwdtotalCacheEntriesCountSignal
+vector 957 TracerouteTestNetwork fwddurationOfFirstCacheEmitSignal:vector ETV
+attr recordingmode vector
+attr source fwddurationOfFirstCacheEmitSignal
+vector 958 TracerouteTestNetwork fwdTotalNetworkPITEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdTotalNetworkPITEntryCount
+vector 959 TracerouteTestNetwork fwdTotalNetworkFIBEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdTotalNetworkFIBEntryCount
+vector 960 TracerouteTestNetwork fwdTotalNetworkCSEntryCount:vector ETV
+attr recordingmode vector
+attr source fwdTotalNetworkCSEntryCount
+13	152176 2638 191 50007 107.246 1194.838 132 16 16 2112 33792
+15	154814 606 445 49665 107.278 1187.278 28 1016 1016 28448 28903168
+16	155420 2068 2986 26676 150 158 133 16 16 2128 34048
+17	157488 6354 191 49929 107.246 1194.838 318 16 16 5088 81408
+19	163842 606 445 49665 107.278 1187.278 28 1016 1016 28448 28903168
+20	164448 2206 3076 26676 151 158 142 16 16 2272 36352
+21	166654 2632 3241 27542 151 158.056 168 26 1016 6520 2186156
+22	169286 625 445 49665 107.278 1187.278 28 1000 28000 406000 7714000000
+23	169911 606 445 49665 107.278 1187.278 28 1000 1000 28000 28000000
+25	170517 40 80 83 0 0 4 1 1 4 4
+26	170557 3489 445 49665 107.278 1187.278 217 0 18 3133 47253
+27	174046 4441 191 50007 107.246 1194.838 265 0 0 0 0
+28	178487 4441 191 50007 107.246 1194.838 265 1 1 265 265
+29	182928 7943 189 49956 107.246 1194.838 461 48 1048 53447 34084129
+30	190871 11937 192 49974 107.246 1194.838 665 48 1048 63752 34608556
+46	202808 2638 253 50036 107.246 1194.838 132 16 16 2112 33792
+48	205446 571 689 49372 109.689 1114.453 26 1016 1016 26416 26838656
+49	206017 2311 2989 24865 150 158 148 16 16 2368 37888
+50	208328 4794 253 49754 107.246 1194.838 240 16 16 3840 61440
+52	213122 571 689 49372 109.689 1114.453 26 1016 1016 26416 26838656
+53	213693 2446 3079 24865 151 158 157 16 16 2512 40192
+54	216139 2828 3254 22312 151 157 181 26 30 4893 132567
+55	218967 588 689 49372 109.689 1114.453 26 1000 26000 351000 6201000000
+56	219555 571 689 49372 109.689 1114.453 26 1000 1000 26000 26000000
+58	220126 40 84 87 0 0 4 1 1 4 4
+59	220166 3512 689 49372 109.689 1114.453 222 1 15 2880 39468
+60	223678 4669 253 50036 107.246 1194.838 280 0 0 0 0
+61	228347 4669 253 50036 107.246 1194.838 280 1 1 280 280
+62	233016 8347 243 50001 107.246 1194.838 487 48 1048 50860 29777676
+63	241363 10780 260 49768 107.246 1194.838 613 48 1048 57421 30122391
+79	252143 4794 320 49826 107.246 1194.838 240 16 16 3840 61440
+81	256937 1137 1396 50078 122.95 1194.902 52 1016 1016 52832 53677312
+82	258074 4042 2992 25977 150 158 257 16 16 4112 65792
+83	262116 9591 320 49826 107.246 1194.838 480 16 16 7680 122880
+85	271707 565 1396 50070 122.95 1194.886 26 1016 1016 26416 26838656
+86	272272 4180 3082 25977 151 158 266 16 16 4256 68096
+87	276452 5742 3267 27994 151 158.12 351 26 1016 23609 14713755
+88	282194 582 1396 50070 122.95 1194.886 26 1000 26000 351000 6201000000
+89	282776 565 1396 50070 122.95 1194.886 26 1000 1000 26000 26000000
+91	283341 40 88 91 0 0 4 1 1 4 4
+92	283381 6453 1396 50070 122.95 1194.886 392 7 24 8372 181366
+93	289834 8339 320 49826 107.246 1194.838 497 0 0 0 0
+94	298173 8339 320 49826 107.246 1194.838 497 1 1 497 497
+95	306512 15714 302 50076 107.246 1194.902 900 48 1048 112680 74786640
+96	322226 20217 333 50071 107.246 1194.886 1132 48 1048 98329 46879579
+100	342443 177 29905 48481 252.042 1092.042 8 120 120 960 115200
+101	342620 358 2049 48481 132.042 1092.042 17 16 16 272 4352
+102	342978 169 29903 48479 252.042 1092.042 8 16 16 128 2048
+103	343147 185 29905 48481 252.042 1092.042 8 1016 1016 8128 8258048
+104	343332 185 29905 48481 252.042 1092.042 8 1000 1000 8000 8000000
+106	343517 177 29905 48481 252.042 1092.042 8 120 120 960 115200
+107	343694 358 2049 48481 132.042 1092.042 17 16 16 272 4352
+108	344052 169 29903 48479 252.042 1092.042 8 16 16 128 2048
+109	344221 185 29905 48481 252.042 1092.042 8 1016 1016 8128 8258048
+112	344406 185 29905 48481 252.042 1092.042 8 1000 1000 8000 8000000
+118	344591 2035 201 50040 107.246 1194.838 97 16 16 1552 24832
+120	346626 207 2312 48744 132.082 1092.082 9 1016 1016 9144 9290304
+121	346833 265 3145 26584 151 158 16 16 16 256 4096
+122	347098 189 2050 48482 132.042 1092.042 9 16 16 144 2304
+125	347287 543 2950 24587 150 158 33 16 16 528 8448
+127	347830 207 2312 48744 132.082 1092.082 9 1000 9000 45000 285000000
+128	348037 207 2312 48744 132.082 1092.082 9 1000 1000 9000 9000000
+130	348244 11 94 94 0 0 1 1 1 1 1
+131	348255 1190 2050 48482 132.042 1092.042 74 5 7 453 2793
+132	349445 4466 201 50040 107.246 1194.838 163 0 0.051282051282051 3.1530795248135 0.11847195319497
+133	353911 4381 201 50040 107.246 1194.838 163 0.94871794871795 1 159.84692047519 156.81231290357
+134	358292 3218 195 50015 107.246 1194.838 165 48 1048 17393 10294975
+135	361510 997 2051 48483 132.042 1092.042 58 48 48 2784 133632
+139	362507 200 28030 49406 227.246 1187.246 9 120 120 1080 129600
+140	362707 401 186 49406 107.246 1187.246 19 16 16 304 4864
+141	363108 191 28028 49404 227.246 1187.246 9 16 16 144 2304
+142	363299 209 28030 49406 227.246 1187.246 9 1016 1016 9144 9290304
+143	363508 209 28030 49406 227.246 1187.246 9 1000 1000 9000 9000000
+145	363717 200 28030 49406 227.246 1187.246 9 120 120 1080 129600
+146	363917 401 186 49406 107.246 1187.246 19 16 16 304 4864
+147	364318 191 28028 49404 227.246 1187.246 9 16 16 144 2304
+148	364509 209 28030 49406 227.246 1187.246 9 1016 1016 9144 9290304
+151	364718 209 28030 49406 227.246 1187.246 9 1000 1000 9000 9000000
+157	364927 2014 548 50041 109.641 1194.838 96 16 16 1536 24576
+159	366941 230 449 49669 107.286 1187.286 10 1016 1016 10160 10322560
+160	367171 265 3136 26672 151 158 16 16 16 256 4096
+161	367436 210 187 49407 107.246 1187.246 10 16 16 160 2560
+164	367646 560 2951 24577 150 158 34 16 16 544 8704
+166	368206 231 449 49669 107.286 1187.286 10 1000 10000 55000 385000000
+167	368437 230 449 49669 107.286 1187.286 10 1000 1000 10000 10000000
+169	368667 11 97 97 0 0 1 1 1 1 1
+170	368678 1226 187 49407 107.246 1187.246 76 1 7 462 2854
+171	369904 4626 187 50041 107.246 1194.838 165 0 0.055555555555556 3.7931312059922 0.15476719990402
+172	374530 4531 187 50041 107.246 1194.838 165 0.94444444444444 1 161.20686879401 157.56850478792
+173	379061 3237 447 50017 107.286 1194.838 166 48 1048 18453 11394575
+174	382298 1035 188 49408 107.246 1187.246 60 48 48 2880 138240
+178	383333 177 28569 47950 242.342 1082.342 8 120 120 960 115200
+179	383510 357 721 47950 122.342 1082.342 17 16 16 272 4352
+180	383867 169 28567 47948 242.342 1082.342 8 16 16 128 2048
+181	384036 185 28569 47950 242.342 1082.342 8 1016 1016 8128 8258048
+182	384221 185 28569 47950 242.342 1082.342 8 1000 1000 8000 8000000
+184	384406 177 28569 47950 242.342 1082.342 8 120 120 960 115200
+185	384583 357 721 47950 122.342 1082.342 17 16 16 272 4352
+186	384940 169 28567 47948 242.342 1082.342 8 16 16 128 2048
+187	385109 185 28569 47950 242.342 1082.342 8 1016 1016 8128 8258048
+190	385294 185 28569 47950 242.342 1082.342 8 1000 1000 8000 8000000
+196	385479 2036 202 50042 107.246 1194.838 97 16 16 1552 24832
+198	387515 207 1000 48229 122.398 1082.398 9 1016 1016 9144 9290304
+199	387722 265 3139 26753 151 158 16 16 16 256 4096
+200	387987 188 722 47951 122.342 1082.342 9 16 16 144 2304
+203	388175 594 2952 24582 150 158 36 16 16 576 9216
+205	388769 207 1000 48229 122.398 1082.398 9 1000 9000 45000 285000000
+206	388976 207 1000 48229 122.398 1082.398 9 1000 1000 9000 9000000
+208	389183 12 100 100 0 0 1 1 1 1 1
+209	389195 1277 722 47951 122.342 1082.342 79 3 7 481 2957
+210	390472 4611 202 50042 107.246 1194.838 166 0 0.050955414012739 3.4877513466688 0.13483016552462
+211	395083 4517 202 50042 107.246 1194.838 166 0.94904458598726 1 162.51224865333 159.15932747219
+212	399600 3314 197 50019 107.246 1194.838 170 48 1048 19674 12502990
+213	402914 1047 723 47952 122.342 1082.342 61 48 48 2928 140544
+216	403961 24 49672 49672 1189.641 1189.641 1 1080 1080 1080 1166400
+217	403985 200 28296 49672 229.641 1189.641 9 120 120 1080 129600
+218	404185 379 450 49670 109.641 1189.641 18 16 16 288 4608
+219	404564 191 28294 49670 229.641 1189.641 9 16 16 144 2304
+220	404755 209 28296 49672 229.641 1189.641 9 1016 1016 9144 9290304
+221	404964 209 28296 49672 229.641 1189.641 9 1000 1000 9000 9000000
+222	405173 24 49672 49672 1189.641 1189.641 1 1080 1080 1080 1166400
+223	405197 200 28296 49672 229.641 1189.641 9 120 120 1080 129600
+224	405397 379 450 49670 109.641 1189.641 18 16 16 288 4608
+225	405776 191 28294 49670 229.641 1189.641 9 16 16 144 2304
+226	405967 209 28296 49672 229.641 1189.641 9 1016 1016 9144 9290304
+229	406176 209 28296 49672 229.641 1189.641 9 1000 1000 9000 9000000
+235	406385 1490 286 49814 107.246 1194.838 71 16 16 1136 18176
+237	407875 206 693 47516 109.697 1069.697 9 1016 1016 9144 9290304
+238	408081 262 3157 14255 151 156 16 16 16 256 4096
+239	408343 188 451 47274 109.641 1069.641 9 16 16 144 2304
+242	408531 597 2953 24544 150 158 36 16 16 576 9216
+244	409128 206 693 47516 109.697 1069.697 9 1000 9000 45000 285000000
+245	409334 206 693 47516 109.697 1069.697 9 1000 1000 9000 9000000
+247	409540 12 103 103 0 0 1 1 1 1 1
+248	409552 1224 451 47274 109.641 1069.641 75 2 10 679 6213
+249	410776 3778 286 49814 107.246 1194.838 141 0 0.064285714285714 3.249743762819 0.15060463039909
+250	414554 3708 286 49814 107.246 1194.838 141 0.93571428571429 1 137.75025623718 134.65111710476
+251	418262 2723 273 49787 107.246 1194.838 142 48 1048 16323 10245633
+252	420985 1047 452 47275 109.641 1069.641 61 48 48 2928 140544
+255	422032 22 44180 44180 859.422 859.422 1 720 720 720 518400
+256	422054 155 30171 49149 259.422 1114.437 7 120 120 840 100800
+257	422209 316 2313 49149 139.422 1114.437 15 16 16 240 3840
+258	422525 148 30169 49147 259.422 1114.437 7 16 16 112 1792
+259	422673 162 30171 49149 259.422 1114.437 7 1016 1016 7112 7225792
+260	422835 162 30171 49149 259.422 1114.437 7 1000 1000 7000 7000000
+261	422997 22 44180 44180 859.422 859.422 1 720 720 720 518400
+262	423019 155 30171 49149 259.422 1114.437 7 120 120 840 100800
+263	423174 316 2313 49149 139.422 1114.437 15 16 16 240 3840
+264	423490 148 30169 49147 259.422 1114.437 7 16 16 112 1792
+265	423638 162 30171 49149 259.422 1114.437 7 1016 1016 7112 7225792
+268	423800 162 30171 49149 259.422 1114.437 7 1000 1000 7000 7000000
+274	423962 1510 287 49815 107.246 1194.838 72 16 16 1152 18432
+276	425472 184 2540 49376 139.446 1114.461 8 1016 1016 8128 8258048
+277	425656 262 3148 14762 151 156 16 16 16 256 4096
+278	425918 168 2314 49150 139.422 1114.437 8 16 16 128 2048
+281	426086 682 2954 24551 150 158 41 16 16 656 10496
+283	426768 184 2540 49376 139.446 1114.461 8 1000 8000 36000 204000000
+284	426952 184 2540 49376 139.446 1114.461 8 1000 1000 8000 8000000
+286	427136 12 106 106 0 0 1 1 1 1 1
+287	427148 1284 2314 49150 139.422 1114.437 79 8 10 720 6578
+288	428432 3703 287 49815 107.246 1194.838 144 0 0.049645390070922 2.4200235314367 0.092430984499164
+289	432135 3637 287 49815 107.246 1194.838 144 0.95035460992908 1 141.57997646856 139.25238392163
+290	435772 2806 275 49789 107.246 1194.838 147 48 1048 15621 9167395
+291	438578 1112 2315 49151 139.422 1114.437 65 48 48 3120 149760
+295	439690 177 29659 48235 250.357 1090.357 8 120 120 960 115200
+296	439867 358 1805 48235 130.357 1090.357 17 16 16 272 4352
+297	440225 169 29657 48233 250.357 1090.357 8 16 16 128 2048
+298	440394 185 29659 48235 250.357 1090.357 8 1016 1016 8128 8258048
+299	440579 185 29659 48235 250.357 1090.357 8 1000 1000 8000 8000000
+301	440764 177 29659 48235 250.357 1090.357 8 120 120 960 115200
+302	440941 358 1805 48235 130.357 1090.357 17 16 16 272 4352
+303	441299 169 29657 48233 250.357 1090.357 8 16 16 128 2048
+304	441468 185 29659 48235 250.357 1090.357 8 1016 1016 8128 8258048
+307	441653 185 29659 48235 250.357 1090.357 8 1000 1000 8000 8000000
+313	441838 1489 288 49816 107.246 1194.838 71 16 16 1136 18176
+315	443327 207 2048 48478 130.405 1090.405 9 1016 1016 9144 9290304
+316	443534 262 3151 15280 151 156 16 16 16 256 4096
+317	443796 189 1806 48236 130.357 1090.357 9 16 16 144 2304
+320	443985 682 2955 24560 150 158 41 16 16 656 10496
+322	444667 207 2048 48478 130.405 1090.405 9 1000 9000 45000 285000000
+323	444874 207 2048 48478 130.405 1090.405 9 1000 1000 9000 9000000
+325	445081 12 109 109 0 0 1 1 1 1 1
+326	445093 1305 1806 48236 130.357 1090.357 80 6 10 727 6633
+327	446398 3771 288 49816 107.246 1194.838 145 0 0.057553956834532 2.72620186248 0.11448334920249
+328	450169 3702 288 49816 107.246 1194.838 145 0.94244604316547 1 142.27379813752 139.66207962424
+329	453871 2808 277 49791 107.246 1194.838 147 48 1048 16621 10263395
+330	456679 1133 1807 48237 130.357 1090.357 66 48 48 3168 152064
+333	457812 22 45433 45433 962.902 962.902 1 840 840 840 705600
+334	457834 177 28851 49675 242.902 1194.838 8 120 120 960 115200
+335	458011 359 1001 49675 122.902 1194.838 17 16 16 272 4352
+336	458370 169 28849 49673 242.902 1194.838 8 16 16 128 2048
+337	458539 185 28851 49675 242.902 1194.838 8 1016 1016 8128 8258048
+338	458724 185 28851 49675 242.902 1194.838 8 1000 1000 8000 8000000
+339	458909 22 45433 45433 962.902 962.902 1 840 840 840 705600
+340	458931 177 28851 49675 242.902 1194.838 8 120 120 960 115200
+341	459108 359 1001 49675 122.902 1194.838 17 16 16 272 4352
+342	459467 169 28849 49673 242.902 1194.838 8 16 16 128 2048
+343	459636 185 28851 49675 242.902 1194.838 8 1016 1016 8128 8258048
+346	459821 185 28851 49675 242.902 1194.838 8 1000 1000 8000 8000000
+352	460006 3167 391 49912 107.246 1194.838 151 16 16 2416 38656
+354	463173 208 1400 50074 122.958 1194.894 9 1016 1016 9144 9290304
+355	463381 265 3169 26011 151 158 16 16 16 256 4096
+356	463646 190 1002 49676 122.902 1194.838 9 16 16 144 2304
+358	463836 208 1400 50074 122.958 1194.894 9 1016 1016 9144 9290304
+359	464044 1203 2956 24575 150 158 72 16 16 1152 18432
+361	465247 208 1400 50074 122.958 1194.894 9 1000 9000 45000 285000000
+362	465455 208 1400 50074 122.958 1194.894 9 1000 1000 9000 9000000
+364	465663 12 112 112 0 0 1 1 1 1 1
+365	465675 2384 1002 50074 122.902 1194.894 135 2 12 1464 16078
+366	468059 6987 391 49912 107.246 1194.838 256 0 0.031620553359684 3.1480254369667 0.076012957870434
+367	475046 6831 391 49912 107.246 1194.838 256 0.96837944664032 1 252.85197456303 249.77996208394
+368	481877 5344 354 50072 107.246 1194.894 273 48 1048 37067 25940909
+369	487221 1866 1003 50075 122.902 1194.894 106 48 1048 14088 10108224
+372	489087 23 48232 48232 1087.951 1087.951 1 960 960 960 921600
+373	489110 177 29257 48232 247.951 1087.951 8 120 120 960 115200
+374	489287 336 1405 48230 127.951 1087.951 16 16 16 256 4096
+375	489623 169 29255 48230 247.951 1087.951 8 16 16 128 2048
+376	489792 185 29257 48232 247.951 1087.951 8 1016 1016 8128 8258048
+377	489977 185 29257 48232 247.951 1087.951 8 1000 1000 8000 8000000
+378	490162 23 48232 48232 1087.951 1087.951 1 960 960 960 921600
+379	490185 177 29257 48232 247.951 1087.951 8 120 120 960 115200
+380	490362 336 1405 48230 127.951 1087.951 16 16 16 256 4096
+381	490698 169 29255 48230 247.951 1087.951 8 16 16 128 2048
+382	490867 185 29257 48232 247.951 1087.951 8 1016 1016 8128 8258048
+385	491052 185 29257 48232 247.951 1087.951 8 1000 1000 8000 8000000
+391	491237 3190 392 49913 107.246 1194.838 152 16 16 2432 38912
+393	494427 183 1800 45831 127.991 967.991 8 1016 1016 8128 8258048
+394	494610 265 3160 26053 151 158 16 16 16 256 4096
+395	494875 167 1406 45437 127.951 967.951 8 16 16 128 2048
+397	495042 183 1800 45831 127.991 967.991 8 1016 1016 8128 8258048
+398	495225 1321 2957 24585 150 158 79 16 16 1264 20224
+400	496546 183 1800 45831 127.991 967.991 8 1000 8000 36000 204000000
+401	496729 183 1800 45831 127.991 967.991 8 1000 1000 8000 8000000
+403	496912 12 115 115 0 0 1 1 1 1 1
+404	496924 2600 1406 45831 127.951 967.991 148 5 12 1613 17693
+405	499524 7066 392 49913 107.246 1194.838 263 0 0.031872509960159 2.9592982665035 0.069675440586651
+406	506590 6914 392 49913 107.246 1194.838 263 0.96812749003984 1 260.0407017335 257.15107890758
+407	513504 5576 356 49889 107.246 1194.838 288 48 1048 23177 9578183
+408	519080 1936 1407 45832 127.951 967.991 111 48 1048 13328 9023744
+412	521016 177 30401 48747 260.792 1100.792 8 120 120 960 115200
+413	521193 358 2541 48747 140.792 1100.792 17 16 16 272 4352
+414	521551 169 30399 48745 260.792 1100.792 8 16 16 128 2048
+415	521720 185 30401 48747 260.792 1100.792 8 1016 1016 8128 8258048
+416	521905 185 30401 48747 260.792 1100.792 8 1000 1000 8000 8000000
+418	522090 177 30401 48747 260.792 1100.792 8 120 120 960 115200
+419	522267 358 2541 48747 140.792 1100.792 17 16 16 272 4352
+420	522625 169 30399 48745 260.792 1100.792 8 16 16 128 2048
+421	522794 185 30401 48747 260.792 1100.792 8 1016 1016 8128 8258048
+424	522979 185 30401 48747 260.792 1100.792 8 1000 1000 8000 8000000
+430	523164 3168 393 49914 107.246 1194.838 151 16 16 2416 38656
+432	526332 207 2936 49142 140.824 1100.824 9 1016 1016 9144 9290304
+433	526539 265 3163 26094 151 158 16 16 16 256 4096
+434	526804 189 2542 48748 140.792 1100.792 9 16 16 144 2304
+436	526993 207 2936 49142 140.824 1100.824 9 1016 1016 9144 9290304
+437	527200 1271 2958 24590 150 158 76 16 16 1216 19456
+439	528471 207 2936 49142 140.824 1100.824 9 1000 9000 45000 285000000
+440	528678 207 2936 49142 140.824 1100.824 9 1000 1000 9000 9000000
+442	528885 12 118 118 0 0 1 1 1 1 1
+443	528897 2604 2542 49142 140.792 1100.824 147 7 12 1604 17566
+444	531501 6920 393 49914 107.246 1194.838 260 0 0.031872509960159 2.7136124864761 0.062081086210149
+445	538421 6773 393 49914 107.246 1194.838 260 0.96812749003984 1 257.28638751352 254.63485611326
+446	545194 5537 358 49891 107.246 1194.838 285 48 1048 23997 10663383
+447	550731 1932 2543 49143 140.792 1100.824 110 48 1048 14280 10117440
+463	552663 5035 203 50031 107.246 1194.838 240 16 16 3840 61440
+465	557698 839 441 49661 107.27 1187.27 37 1016 1016 37592 38193472
+466	558537 3136 3142 26592 151 158 188 16 16 3008 48128
+467	561673 5540 203 49898 107.246 1194.838 264 16 16 4224 67584
+469	567213 839 441 49661 107.27 1187.27 37 1016 1016 37592 38193472
+470	568052 2697 3666 26592 152 158 162 16 16 2592 41472
+471	570749 3239 3955 27420 152 158.048 194 26 1016 7278 2208214
+472	573988 867 441 49661 107.27 1187.27 37 1000 37000 703000 17575000000
+473	574855 839 441 49661 107.27 1187.27 37 1000 1000 37000 37000000
+475	575694 36 119 121 0 0 3 1 1 3 3
+476	575730 4287 441 49661 107.27 1187.27 249 0 20 4400 80152
+477	580017 7743 203 50031 107.246 1194.838 428 0 0 0 0
+478	587760 7743 203 50031 107.246 1194.838 428 1 1 428 428
+479	595503 12247 199 49986 107.246 1194.838 659 48 1048 72596 44473396
+480	607750 12624 204 49922 107.246 1194.838 675 48 1048 73574 44532886
+496	620374 6672 210 50032 107.246 1194.838 318 16 16 5088 81408
+498	627046 827 673 50054 109.657 1194.854 36 1016 1016 36576 37161216
+499	627873 3648 3791 26549 152 158 217 16 16 3472 55552
+500	631521 15105 210 49909 107.246 1194.838 720 16 16 11520 184320
+502	646626 827 673 50054 109.657 1194.854 36 1016 1016 36576 37161216
+503	647453 3559 4438 26549 153 158 212 16 16 3392 54272
+504	651012 2844 4653 27428 153 158.048 163 26 1016 12534 8383578
+505	653856 854 673 50054 109.657 1194.854 36 1000 36000 666000 16206000000
+506	654710 827 673 50054 109.657 1194.854 36 1000 1000 36000 36000000
+508	655537 48 122 125 0 0 4 1 1 4 4
+509	655585 4076 673 50054 109.657 1194.854 229 4 32 6747 202041
+510	659661 9785 210 50032 107.246 1194.838 535 0 0 0 0
+511	669446 9785 210 50032 107.246 1194.838 535 1 1 535 535
+512	679231 13990 206 50051 107.246 1194.854 734 48 1048 80648 50069500
+513	693221 22670 212 50055 107.246 1194.854 1151 48 1048 101174 51085018
+529	715891 5035 224 50043 107.246 1194.838 240 16 16 3840 61440
+531	720926 813 669 50053 109.649 1194.854 36 1016 1016 36576 37161216
+532	721739 1364 4523 26634 153 158 81 16 16 1296 20736
+533	723103 2224 224 49899 107.246 1194.838 106 16 16 1696 27136
+535	725327 605 669 50047 109.649 1194.846 27 1016 1016 27432 27870912
+536	725932 1116 5611 26634 154 158 66 16 16 1056 16896
+537	727048 1157 5868 27322 154 158.04 62 30 1016 8762 7275292
+538	728205 623 669 50047 109.649 1194.846 27 1000 27000 378000 6930000000
+539	728828 605 669 50047 109.649 1194.846 27 1000 1000 27000 27000000
+541	729433 24 126 127 0 0 2 1 1 2 2
+542	729457 2334 669 50047 109.649 1194.846 128 1 15 1358 14770
+543	731791 6078 224 50043 107.246 1194.838 321 0 0 0 0
+544	737869 6078 224 50043 107.246 1194.838 321 1 1 321 321
+545	743947 8369 216 50049 107.246 1194.854 419 48 1048 63154 48097996
+546	752316 5347 228 50048 107.246 1194.846 276 48 1048 48018 37984604
+562	757663 3903 227 50028 107.246 1194.838 186 16 16 2976 47616
+564	761566 1370 433 49653 107.254 1187.254 60 1016 1016 60960 61935360
+565	762936 3198 3154 26391 151 158 192 16 16 3072 49152
+566	766134 8310 227 49920 107.246 1194.838 396 16 16 6336 101376
+568	774444 1004 433 49653 107.254 1187.254 44 1016 1016 44704 45419264
+569	775448 3342 3676 26391 152 158 201 16 16 3216 51456
+570	778790 4043 3967 27224 152 158.032 242 26 1016 7578 1211400
+571	782833 1039 433 49653 107.254 1187.254 44 1000 44000 990000 29370000000
+572	783872 1004 433 49653 107.254 1187.254 44 1000 1000 44000 44000000
+574	784876 48 128 131 0 0 4 1 1 4 4
+575	784924 5240 433 49653 107.254 1187.254 304 0 19 5356 96860
+576	790164 6723 227 50028 107.246 1194.838 378 0 0 0 0
+577	796887 6723 227 50028 107.246 1194.838 378 1 1 378 378
+578	803610 12511 222 49981 107.246 1194.838 680 48 1048 95926 68667626
+579	816121 16849 232 49955 107.246 1194.838 892 48 1048 90522 51665800
+595	832970 7258 282 50034 107.246 1194.838 346 16 16 5536 88576
+597	840228 805 1392 50066 122.942 1194.878 35 1016 1016 35560 36128960
+598	841033 5375 3166 26167 151 158 321 16 16 5136 82176
+599	846408 15102 282 49759 107.246 1194.838 720 16 16 11520 184320
+601	861510 805 1392 50066 122.942 1194.878 35 1016 1016 35560 36128960
+602	862315 5126 3686 26167 152 158 306 16 16 4896 78336
+603	867441 6762 3983 27795 152 158.08 390 26 1016 25712 15777104
+604	874203 831 1392 50066 122.942 1194.878 35 1000 35000 630000 14910000000
+605	875034 805 1392 50066 122.942 1194.878 35 1000 1000 35000 35000000
+607	875839 48 132 135 0 0 4 1 1 4 4
+608	875887 7744 1392 50066 122.942 1194.878 442 11 32 13304 403540
+609	883631 11966 282 50034 107.246 1194.838 667 0 0 0 0
+610	895597 11966 282 50034 107.246 1194.838 667 1 1 667 667
+611	907563 20197 265 50064 107.246 1194.878 1092 48 1048 106571 57765269
+612	927760 28143 291 50067 107.246 1194.878 1472 48 1048 125128 58674960
+628	955903 7299 283 49911 107.246 1194.838 348 16 16 5568 89088
+630	963202 1833 970 49141 122.35 1100.824 81 1016 1016 82296 83612736
+631	965035 2410 3825 25999 152 158 144 16 16 2304 36864
+632	967445 10070 283 49911 107.246 1194.838 480 16 16 7680 122880
+634	977515 593 970 49121 122.35 1100.8 27 1016 1016 27432 27870912
+635	978108 2148 4452 25999 153 158 128 16 16 2048 32768
+636	980256 2670 4681 27763 153 158.072 152 27 1016 13234 9407530
+637	982926 611 970 49121 122.35 1100.8 27 1000 27000 378000 6930000000
+638	983537 593 970 49121 122.35 1100.8 27 1000 1000 27000 27000000
+640	984130 36 136 138 0 0 3 1 1 3 3
+641	984166 3650 970 49121 122.35 1100.8 207 7 33 6167 185963
+642	987816 9217 283 49911 107.246 1194.838 492 0 0 0 0
+643	997033 9217 283 49911 107.246 1194.838 492 1 1 492 492
+644	1006250 14220 267 49882 107.246 1194.838 726 48 1048 125327 99377273
+645	1020470 15780 294 49942 107.246 1194.838 805 48 1048 76442 41506666
+661	1036250 3862 211 50037 107.246 1194.838 184 16 16 2944 47104
+663	1040112 436 437 49657 107.262 1187.262 19 1016 1016 19304 19612864
+664	1040548 1967 3792 26499 152 158 118 16 16 1888 30208
+665	1042515 2224 211 49906 107.246 1194.838 106 16 16 1696 27136
+667	1044739 436 437 49657 107.262 1187.262 19 1016 1016 19304 19612864
+668	1045175 1823 4445 26499 153 158 109 16 16 1744 27904
+669	1046998 2367 4669 27314 153 158.04 141 26 1016 4811 1135379
+670	1049365 446 437 49657 107.262 1187.262 19 1000 19000 190000 2470000000
+671	1049811 436 437 49657 107.262 1187.262 19 1000 1000 19000 19000000
+673	1050247 24 139 140 0 0 2 1 1 2 2
+674	1050271 3001 437 49657 107.262 1187.262 175 0 19 3132 57234
+675	1053272 5527 211 50037 107.246 1194.838 302 0 0 0 0
+676	1058799 5527 211 50037 107.246 1194.838 302 1 1 302 302
+677	1064326 8631 208 50003 107.246 1194.838 462 48 1048 43632 23140658
+678	1072957 6996 215 49933 107.246 1194.838 384 48 1048 39987 22971539
+694	1079953 5034 254 49830 107.246 1194.838 240 16 16 3840 61440
+696	1084987 390 1785 48466 127.967 1090.381 17 1016 1016 17272 17548352
+697	1085377 2100 3807 26277 152 158 126 16 16 2016 32256
+698	1087477 3357 254 49830 107.246 1194.838 160 16 16 2560 40960
+700	1090834 390 1785 48466 127.967 1090.381 17 1016 1016 17272 17548352
+701	1091224 1922 4543 26277 153 158 115 16 16 1840 29440
+702	1093146 2467 4797 27162 153 158.024 147 26 1016 4969 1139533
+703	1095613 398 1785 48466 127.967 1090.381 17 1000 17000 153000 1785000000
+704	1096011 390 1785 48466 127.967 1090.381 17 1000 1000 17000 17000000
+706	1096401 24 141 142 0 0 2 1 1 2 2
+707	1096425 3146 1785 48466 127.967 1090.381 184 10 25 4241 98787
+708	1099571 6768 254 49830 107.246 1194.838 366 0 0 0 0
+709	1106339 6768 254 49830 107.246 1194.838 366 1 1 366 366
+710	1113107 9989 245 49810 107.246 1194.838 530 48 1048 44958 21111916
+711	1123096 8299 263 49859 107.246 1194.838 449 48 1048 41169 20935885
+727	1131395 8350 225 50044 107.246 1194.838 398 16 16 6368 101888
+729	1139745 414 984 50058 122.366 1194.862 18 1016 1016 18288 18580608
+730	1140159 3994 4524 26451 153 158 237 16 16 3792 60672
+731	1144153 8894 225 49910 107.246 1194.838 424 16 16 6784 108544
+733	1153047 414 984 50058 122.366 1194.862 18 1016 1016 18288 18580608
+734	1153461 3677 5721 26451 154 158 218 16 16 3488 55808
+735	1157138 2688 6044 27553 154 158.056 153 26 1016 12235 8374621
+736	1159826 423 984 50058 122.366 1194.862 18 1000 18000 171000 2109000000
+737	1160249 414 984 50058 122.366 1194.862 18 1000 1000 18000 18000000
+739	1160663 36 143 145 0 0 3 1 1 3 3
+740	1160699 3441 984 50058 122.366 1194.862 195 6 31 5494 157082
+741	1164140 11709 225 50044 107.246 1194.838 635 0 0 0 0
+742	1175849 11709 225 50044 107.246 1194.838 635 1 1 635 635
+743	1187558 15411 218 50056 107.246 1194.862 804 48 1048 66027 30504309
+744	1202969 16032 229 50059 107.246 1194.862 835 48 1048 67867 30613661
+760	1219001 7886 250 49893 107.246 1194.838 376 16 16 6016 96256
+762	1226887 412 977 50062 122.358 1194.87 18 1016 1016 18288 18580608
+763	1227299 4065 3827 26116 152 158 242 16 16 3872 61952
+764	1231364 11160 250 49893 107.246 1194.838 532 16 16 8512 136192
+766	1242524 412 977 50062 122.358 1194.87 18 1016 1016 18288 18580608
+767	1242936 3864 4693 26116 153 158 230 16 16 3680 58880
+768	1246800 4826 4928 27652 153 158.064 274 26 1016 22569 15691697
+769	1251626 421 977 50062 122.358 1194.87 18 1000 18000 171000 2109000000
+770	1252047 412 977 50062 122.358 1194.87 18 1000 1000 18000 18000000
+772	1252459 36 146 148 0 0 3 1 1 3 3
+773	1252495 3468 977 50062 122.358 1194.87 197 8 37 6711 230957
+774	1255963 11333 250 49893 107.246 1194.838 618 0 0 0 0
+775	1267296 11333 250 49893 107.246 1194.838 618 1 1 618 618
+776	1278629 15177 237 50060 107.246 1194.87 797 48 1048 65787 30498555
+777	1293806 20614 256 50063 107.246 1194.87 1075 48 1048 87785 38990193
+793	1314420 6671 226 50027 107.246 1194.838 318 16 16 5088 81408
+796	1321091 1700 4525 25723 153 158 101 16 16 1616 25856
+797	1322791 3903 226 49901 107.246 1194.838 186 16 16 2976 47616
+800	1326694 623 5881 25723 154 158 37 16 16 592 9472
+801	1327317 286 6232 21389 154 157 17 27 28 469 12943
+805	1327603 24 149 150 0 0 2 1 1 2 2
+806	1327627 603 5881 21389 154 157 36 21 30 923 23877
+807	1328230 7952 226 50027 107.246 1194.838 419 0 0 0 0
+808	1336182 7952 226 50027 107.246 1194.838 419 1 1 419 419
+809	1344134 8657 220 49979 107.246 1194.838 436 48 59 20972 1009252
+810	1352791 5295 231 49925 107.246 1194.838 269 48 60 13109 640975
+826	1358086 6084 251 50033 107.246 1194.838 290 16 16 4640 74240
+829	1364170 1596 5877 26447 154 158 95 16 16 1520 24320
+830	1365766 4447 251 49908 107.246 1194.838 212 16 16 3392 54272
+833	1370213 879 8283 25858 155 158 52 16 16 832 13312
+834	1371092 354 8800 21194 155 157 21 27 28 581 16079
+838	1371446 24 151 152 0 0 2 1 1 2 2
+839	1371470 740 8283 21194 155 157 44 24 33 1228 34518
+840	1372210 7295 251 50033 107.246 1194.838 385 0 0 0 0
+841	1379505 7295 251 50033 107.246 1194.838 385 1 1 385 385
+842	1386800 8034 239 49990 107.246 1194.838 406 48 59 19521 938955
+843	1394834 6076 258 49935 107.246 1194.838 309 48 60 15077 738319
+854	1400910 567 599 49934 109.641 1194.838 27 16 16 432 6912
+855	1401477 621 599 49934 109.641 1194.838 27 1016 1016 27432 27870912
+856	1402098 169 8052 26715 155 158 10 16 16 160 2560
+857	1402267 189 8052 26715 155 158 10 1016 1016 10160 10322560
+858	1402456 804 599 49934 109.641 1194.838 37 14 1000 34042 34000588
+859	1403260 2224 249 50009 107.246 1194.838 106 16 16 1696 27136
+862	1405484 1116 5715 26716 154 158 66 16 16 1056 16896
+865	1406600 829 616 50009 109.641 1194.838 36 1016 1016 36576 37161216
+867	1407429 183 8103 26740 155 158 10 30 1016 7202 7228492
+868	1407612 639 616 49983 109.641 1194.838 27 1000 27000 378000 6930000000
+869	1408251 621 616 49983 109.641 1194.838 27 1000 1000 27000 27000000
+871	1408872 24 153 154 0 0 2 1 2 3 5
+872	1408896 1750 616 49983 109.641 1194.838 103 1 8 649 4183
+873	1410646 5657 249 50009 107.246 1194.838 172 0 0.2 6.3770125726005 0.3496588924117
+874	1416303 5512 249 50009 107.246 1194.838 172 0.8 1 165.6229874274 159.59563374721
+875	1421815 3340 235 49960 107.246 1194.838 172 48 48 8256 396288
+876	1425155 1972 644 50046 109.641 1194.846 98 48 1048 47746 47358412
+887	1427127 545 264 49484 107.246 1187.246 26 16 16 416 6656
+888	1427672 597 264 49484 107.246 1187.246 26 1016 1016 26416 26838656
+889	1428269 48 4764 9459 153 155 3 16 16 48 768
+890	1428317 54 4764 9459 153 155 3 1016 1016 3048 3096768
+891	1428371 645 264 49484 107.246 1187.246 29 14 1000 26042 26000588
+892	1429016 2770 255 50038 107.246 1194.838 132 16 16 2112 33792
+895	1431786 288 3808 9567 152 155 18 16 16 288 4608
+898	1432074 963 281 49501 107.246 1187.246 42 1016 1016 42672 43354752
+900	1433037 48 4802 9564 153 155 3 30 30 90 2700
+901	1433085 614 281 49501 107.246 1187.246 26 1000 26000 351000 6201000000
+902	1433699 597 281 49501 107.246 1187.246 26 1000 1000 26000 26000000
+904	1434296 24 155 156 0 0 2 1 2 3 5
+905	1434320 789 281 49501 107.246 1187.246 44 0 8 264 1650
+906	1435109 4924 255 50038 107.246 1194.838 150 0 0.22222222222222 14.729705313006 1.6024459711377
+907	1440033 4877 255 50038 107.246 1194.838 150 0.77777777777778 1 135.27029468699 122.14303534513
+908	1444910 3058 247 50005 107.246 1194.838 150 48 48 7200 345600
+909	1447968 1251 290 49510 107.246 1187.246 60 48 1048 44922 46174860
+920	1449219 566 876 48799 122.342 1100.792 27 16 16 432 6912
+921	1449785 620 876 48799 122.342 1100.792 27 1016 1016 27432 27870912
+922	1450405 67 5913 25611 154 158 4 16 16 64 1024
+923	1450472 75 5913 25611 154 158 4 1016 1016 4064 4129024
+924	1450547 689 876 48799 122.342 1100.792 31 14 1000 28042 28000588
+925	1451236 5035 328 50035 107.246 1194.838 240 16 16 3840 61440
+928	1456271 348 4551 25612 153 158 21 16 16 336 5376
+931	1456619 1860 910 49109 122.342 1100.792 81 1016 1016 82296 83612736
+933	1458479 69 5964 25663 154 158 4 30 1016 1106 1034956
+934	1458548 638 910 48811 122.342 1100.792 27 1000 27000 378000 6930000000
+935	1459186 620 910 48811 122.342 1100.792 27 1000 1000 27000 27000000
+937	1459806 24 157 158 0 0 2 1 2 3 5
+938	1459830 894 910 48811 122.342 1100.792 47 3 13 542 6416
+939	1460724 8582 328 50035 107.246 1194.838 261 0 0.25 45.015749101114 8.1247049395552
+940	1469306 8582 328 50035 107.246 1194.838 261 0.75 1 215.98425089889 179.09320673733
+941	1477888 5383 310 49994 107.246 1194.838 261 48 48 12528 601344
+942	1483271 2166 944 49131 122.342 1100.816 101 48 1048 86890 90109324
+945	1485437 1535 28028 49673 227.246 1194.838 73 1 73 2701 132349
+946	1486972 5823 186 49675 107.246 1194.838 153 7.2238091246523e+18 7.2238091246523e+18 1.1052427960718e+21 7.9840629952197e+39
+947	1492795 305934 187 50044 107.246 1194.838 8874 0 0.017194260988385 79.546868256762 0.92826452129605
+948	1798729 292562 187 50044 107.246 1194.838 8874 0.98280573901161 1 8794.4531317432 8715.8345280077
+951	2091291 265884 187 50078 107.246 1194.902 12657 1 12657 80106153 675962421065
+952	2357175 81579 281 50078 107.246 1194.902 3783 1304 963896 863064327 3.3837786666172e+14
+953	2438754 65054 449 50014 107.286 1194.838 2859 1 2859 4088370 7793796010
+955	2503808 64270 449 50014 107.286 1194.838 2859 107.286 1194.838 382637.929 77715029.645085
+958	2568078 9605 159 50105 60 1200 540 0 479 221732 102360308
+959	2577683 9144 159 50105 60 1200 540 1 30 15774 468960
+960	2586827 9527 159 50105 60 1200 540 0 518 136096 48501940
+

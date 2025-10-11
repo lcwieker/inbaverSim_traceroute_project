@@ -2157,7 +2157,7 @@ void RFC8569WithPingForwarder::processTracerouteRpl(TracerouteRplMsg *traceroute
     emit(totalTrafficBytesSignal, demiurgeModel->getTotalTrafficBytesCount());
 
     // generate stats
-    if (arrivalFaceEntry->faceType = TransportTypeFace) {
+    if (arrivalFaceEntry->faceType == TransportTypeFace) {
         emit(totalTracerouteRplsBytesReceivedSignal, (long) tracerouteRplMsg->getByteLength());
     }
 
@@ -2203,6 +2203,7 @@ void RFC8569WithPingForwarder::processTracerouteRpl(TracerouteRplMsg *traceroute
     char *pathlabel = new char[1 + opp_strlen(oldPathlabel) + 1];
     opp_strcpy(pathlabel, pathvalue);
     strcat(pathlabel, oldPathlabel);
+    delete[] pathvalue;
 
     // when the PIT entry exists, forward the Traceroute Reply accordingly
     for (int i = 0; i <pitEntry->arrivalInfoList.size(); i++){
@@ -2239,21 +2240,6 @@ void RFC8569WithPingForwarder::processTracerouteRpl(TracerouteRplMsg *traceroute
             newTracerouteRplMsg->addObject(arrivalTransportInfo);
         }
 
-        // remove the PIT entry if no forwarded answer is expected
-        if(pitEntry->tracerouteToken <= 0){
-            pitEntry->arrivalInfoList.clear();
-            pit.remove(pitEntry);
-
-            EV_INFO << "Deleting PIT entry for traceroute: "
-                    << pitEntry->prefixName
-                    << " " << pitEntry->dataName
-                    << " " << pitEntry->versionName
-                    << " " << pitEntry->segmentNum
-                    << "/token: " << pitEntry->tracerouteToken
-                    << endl;
-            delete pitEntry;
-        }
-
         EV_INFO << simTime() << "Sending Traceroute Reply to Face: "
                 << newTracerouteRplMsg->getPrefixName()
                 << " " << newTracerouteRplMsg->getDataName()
@@ -2271,9 +2257,26 @@ void RFC8569WithPingForwarder::processTracerouteRpl(TracerouteRplMsg *traceroute
         if(arrivalInfo->receivedFace->faceType == TransportTypeFace){
             emit(totalTracerouteRplsBytesSentSignal, (long) newTracerouteRplMsg->getByteLength());
         }
-        //debugging
-        dumpPIT();
+
     }
+
+    // remove the PIT entry if no forwarded answer is expected
+    if(pitEntry->tracerouteToken <= 0){
+        pitEntry->arrivalInfoList.clear();
+        pit.remove(pitEntry);
+
+        EV_INFO << "Deleting PIT entry for traceroute: "
+                << pitEntry->prefixName
+                << " " << pitEntry->dataName
+                << " " << pitEntry->versionName
+                << " " << pitEntry->segmentNum
+                << "/token: " << pitEntry->tracerouteToken
+                << endl;
+        delete pitEntry;
+    }
+
+    //debugging
+    dumpPIT();
 
     delete[] pathlabel;
 
@@ -2599,10 +2602,11 @@ FIBEntry *RFC8569WithPingForwarder::longestPrefixMatchingInFIB(string prefixName
 void RFC8569WithPingForwarder::finish()
 {
     // dump info
-//    dumpFaces();
-//    dumpFIB();
-//    dumpPIT();
-//    dumpCS();
+    dumpFaces();
+    dumpFIB();
+    dumpPIT();
+    dumpCS();
+
 
     // remove fib
     // remove pit

@@ -84,6 +84,7 @@ void TraceRouteApp::initialize(int stage)
         networkInterestRetransmissionCountSignal = registerSignal("appNetworkInterestRetransmissionCount");
         networkInterestInjectedCountSignal = registerSignal("appNetworkInterestInjectedCount");
         tracerouteRttSignal = registerSignal("tracerouteRtt");
+        tracerouteRuntimeSignal = registerSignal("tracerouteRuntime");
     }
     else {
         EV_FATAL << "Something is radically wrong\n";
@@ -138,7 +139,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             tracerouteRqstMsg->setHopsTravelled(0);
             tracerouteRqstMsg->setByteLength(INBAVER_INTEREST_MSG_HEADER_SIZE);
             tracerouteRqstMsg->setRequestStartTime(simTime());
-            tracerouteRqstMsg->setTracerouteToken(intuniform(1000001, 10000000));
+            tracerouteRqstMsg->setTracerouteToken(intuniform(10000001, 100000000));
 
             EV_INFO << simTime() << " Sending Trace for: " << requestingPrefixName
                     << " " << requestingDataName << " v01 " << requestedSegNum
@@ -361,7 +362,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             }
 
             if(finalReply){
-                emit(tracerouteRuntime, (simtime_t) simTime() - TraceStartTime);
+                emit(tracerouteRuntimeSignal, (simtime_t) simTime() - TraceStartTime);
                 //TODO Auswertung
                 /* How to:
                  * 1. In dataNodes, find latest entry with final = true and print name and RTT
@@ -411,13 +412,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
 
 void TraceRouteApp::finish(){
     // remove remaining events
-    if (traceRouteStartEvent -> isScheduled()){
-        cancelEvent(traceRouteStartEvent);
-    }
-    delete traceRouteStartEvent;
+//    cancelAndDelete(traceRouteStartEvent);
+//    cancelAndDelete(traceTimeoutEvent);
 
-    if (traceTimeoutEvent -> isScheduled()){
-        cancelEvent(traceTimeoutEvent);
-    }
-    delete traceTimeoutEvent;
 }
