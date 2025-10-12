@@ -231,7 +231,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                 sendDelayed(tracerouteRqstMsg, 1, "forwarderInOut$o");
 
                 // remember last interest sent time for statistic
-                emit(tracerouteRttSignal, (simtime_t) simTime() - tracerouteRplMsg->getRequestStartTime());
+                emit(tracerouteRttSignal, (simTime() - (tracerouteRplMsg->getRequestStartTime())));
                 //lastTraceSentTime = simTime();
 
                 // update stats
@@ -354,7 +354,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
                             << endl;
                 }
 
-
+                emit(tracerouteRuntimeSignal, (simtime_t) simTime() - TraceStartTime);
                 finalReply = true;
                 delete tracerouteRplMsg;
                 break;
@@ -362,7 +362,7 @@ void TraceRouteApp::handleMessage(cMessage *msg)
             }
 
             if(finalReply){
-                emit(tracerouteRuntimeSignal, (simtime_t) simTime() - TraceStartTime);
+                //emit(tracerouteRuntimeSignal, (simtime_t) simTime() - TraceStartTime);
                 //TODO Auswertung
                 /* How to:
                  * 1. In dataNodes, find latest entry with final = true and print name and RTT

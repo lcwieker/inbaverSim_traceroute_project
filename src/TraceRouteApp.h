@@ -5,6 +5,8 @@
 #ifndef __INBAVERSIM_TRACEROUTEAPP_H_
 #define __INBAVERSIM_TRACEROUTEAPP_H_
 
+#include <omnetpp.h>
+
 #include "Demiurge.h"
 #include "inbaver.h"
 #include "RFC8609Messages_m.h"
